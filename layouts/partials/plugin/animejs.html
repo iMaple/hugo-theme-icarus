@@ -1,0 +1,5 @@
+{{ if .head }}
+    <link rel="stylesheet" href="{{ "css/animation.css" | relURL }}">
+{{ else }}
+    <script type="text/javascript" src="{{ "js/animation.js" | relURL }}"></script>
+{{ end }}

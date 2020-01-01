@@ -1,0 +1,7 @@
+{{ $busuanzi := false }}
+{{ range .Site.Params.plugins }}
+    {{ if and (eq .name "busuanzi") (eq .enable true) }}
+        {{ $busuanzi = true }}
+    {{ end }}
+{{ end }}
+{{ return (dict "busuanzi" $busuanzi) }}

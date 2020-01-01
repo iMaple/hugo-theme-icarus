@@ -1,0 +1,60 @@
+<head>
+    <meta charset="utf-8"/>
+    <meta name="renderer" content="webkit"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <meta name="theme-color" content="#f8f5ec"/>
+    <meta name="msapplication-navbutton-color" content="#f8f5ec">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+    <!-- author & description & keywords  -->
+    <meta name="author"
+          content="{{ if .Params.author }}{{ .Params.author }}{{ else }}{{ .Site.Author.name }}{{ end }}"/>
+
+    <meta name="description"
+          content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary | plainify }}{{ else if .Site.Params.description }}{{ .Site.Params.description }}{{ end }}"/>
+
+    {{ if .Keywords }}
+        <meta name="keywords"
+              content="{{ range $index, $element := .Keywords }}{{ $element }}{{ if ne $index (len $.Keywords | add -1) }}, {{ end }}{{ end }}"/>
+    {{ else if .Site.Params.keywords }}
+        <meta name="keywords"
+              content="{{ range $index, $element := .Site.Params.keywords }}{{ $element }}{{ if ne $index len .Site.Params.keywords | add -1 }}, {{ end }}{{ end }}"/>
+    {{ end }}
+
+    {{ with .Site.Params.baiduVerification }}
+        <meta name="baidu-site-verification" content="{{ . }}"/>
+    {{ end }}
+    {{ with .Site.Params.googleVerification }}
+        <meta name="google-site-verification" content="{{ . }}"/>
+    {{ end }}
+
+    <meta name="generator" content="Hugo {{ .Site.Hugo.Version }} with theme icarus"/>
+
+    <title>{{ .Title }}</title>
+
+    <link rel="icon" href="{{ .Site.Params.site.favicon | relURL }}">
+
+    {{ $cdnProvider := (.Scratch.Get "cdn").cdn }}
+    {{ $fontProvider := (.Scratch.Get "cdn").font }}
+
+    <link rel="stylesheet" href="{{ printf "%sbulma/0.7.4/css/bulma.min.css" $cdnProvider }}">
+    <link rel="stylesheet" href="{{ printf "%shighlight.js/9.15.10/styles/%s.min.css" $cdnProvider $.Site.Params.article.code.theme }}">
+    <link rel="stylesheet" href="{{ printf "%sfont-awesome/5.11.2/css/all.min.css" $cdnProvider }}">
+
+    <link rel="stylesheet" href="{{ printf "%sUbuntu:400,600|Source+Code+Pro" $fontProvider }}">
+
+    {{ range .Site.Params.plugins }}
+        {{ $path := printf "plugin/%s.html" .name }}
+        {{ if and .enable (templates.Exists (printf "partials/%s" $path)) }}
+            {{ partial $path (dict "head" true "baseUrl" $cdnProvider) }}
+        {{ end }}
+    {{ end }}
+
+    <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+</head>

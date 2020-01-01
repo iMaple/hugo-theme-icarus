@@ -1,0 +1,18 @@
+{{ $cdn := "" }}
+{{ $font := "" }}
+{{ if .Site.Params.cdn.enable }}
+    {{ $cdnProvider := .Site.Params.cdn.cdnProvider }}
+    {{ $fontProvider := .Site.Params.cdn.fontProvider }}
+    {{ range .Site.Data.cdn.cdnProviders }}
+        {{ if eq .name ($cdnProvider | default "bootcdn") }}
+            {{ $cdn = .baseUrl }}
+        {{ end }}
+    {{ end }}
+    {{ range .Site.Data.cdn.fontProviders }}
+        {{ if eq .name ($fontProvider | default "google") }}
+            {{ $font = .baseUrl }}
+        {{ end }}
+    {{ end }}
+{{ else }}
+{{ end }}
+{{ return (dict "cdn" $cdn "font" $font) }}

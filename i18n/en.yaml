@@ -1,0 +1,91 @@
+navbar_home:
+  other: 'Home'
+navbar_archives:
+  other: 'Archives'
+navbar_categories:
+  other: 'Categories'
+navbar_tags:
+  other: 'Tags'
+navbar_about:
+  other: 'About'
+
+common_archive:
+  one: 'Archive'
+  other: 'Archives'
+common_category:
+  one: 'Category'
+  other: 'Categories'
+common_tag:
+  one: 'Tag'
+  other: 'Tags'
+common_post:
+  one: 'Post'
+  other: 'Posts'
+common_prev:
+  other: 'Previous'
+common_next:
+  other: 'Next'
+
+widget_follow:
+  other: 'Follow'
+widget_recents:
+  other: 'Recent'
+widget_links:
+  other: 'Links'
+widget_tag_cloud:
+  other: 'Tag Cloud'
+widget_catalogue:
+  other: 'Catalogue'
+widget_email_title:
+  other: 'Subscribe Email'
+widget_email_button:
+  other: 'Subscribe'
+
+article_more:
+  other: 'Read More'
+article_comments:
+  other: 'Comments'
+article_readtime:
+  one: 'One minute to read'
+  other: '{{ .Count }} minutes to read'
+article_words:
+  other: 'about {{ .WordCount }} words'
+
+donate_title:
+  other: 'Like this article? Support the author with'
+donate_alipay:
+  other: 'Alipay'
+donate_wechat:
+  other: 'Wechat'
+donate_paypal:
+  other: 'Paypal'
+donate_patreon:
+  other: 'Patreon'
+
+plugin_back2top:
+  other: 'Back to Top'
+plugin_visit:
+  other: '%s visits'
+plugin_visitor:
+  other: 'Visited by %s users'
+
+search_search:
+  other: 'Search'
+search_hint:
+  other: 'Type something...'
+
+insight_hint:
+  other: 'Type something...'
+insight_posts:
+  other: 'Posts'
+insight_pages:
+  other: 'Pages'
+insight_categories:
+  other: 'Categories'
+insight_tags:
+  other: 'Tags'
+insight_untitled:
+  other: '(Untitled)'
+
+date_formate_archive:
+  other: 'January 2006'

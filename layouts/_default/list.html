@@ -1,0 +1,9 @@
+{{ define "main" }}
+    {{ $paginator := .Paginate (where .Site.RegularPages "Section" "==" "posts") 1 }}
+    {{ range $paginator.Pages }}
+        {{ partial "articles.html" . }}
+    {{ end }}
+    {{ if gt $paginator.TotalPages 10 }}
+        {{ partial "paginator.html" $paginator }}
+    {{ end }}
+{{ end }}

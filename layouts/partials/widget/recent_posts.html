@@ -1,0 +1,34 @@
+{{ $widget := .Scratch.Get "widget" }}
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            {{ i18n "widget_recents" 1 }}
+        </h3>
+        {{ range first $widget.amount (where .Site.RegularPages.ByDate.Reverse "Section" "==" "posts") }}
+            <article class="media">
+                {{ if .Site.Params.article.thumbnail }}
+                <a href="{{ .Permalink }}" class="media-left">
+                    <p class="image is-64x64">
+                        <img class="thumbnail"
+                             src="{{ with .Params.thumbnail }}{{ . }}{{ else }}{{ "images/thumbnail.svg" | relURL }}{{ end }}"
+                             alt="{{ .Title }}">
+                    </p>
+                </a>
+                {{ end }}
+                <div class="media-content">
+                    <div class="content">
+                        <div><time class="has-text-grey is-size-7 is-uppercase" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-01" }}</time></div>
+                        <a href="{{ .Permalink }}" class="title has-link-black-ter is-size-6 has-text-weight-normal">{{ .LinkTitle }}</a>
+                        <p class="is-size-7 is-uppercase">
+                            {{ $categories := split (index .Params.categories 0) "-#-" }}
+                            {{ range $index, $value := $categories }}
+                                <a class="has-link-grey" href="#">{{ $value }}</a>
+                                {{ if ne (add $index 1) (len $categories) }}&nbsp;/&nbsp;{{ end }}
+                            {{ end }}
+                        </p>
+                    </div>
+                </div>
+            </article>
+        {{ end }}
+    </div>
+</div>

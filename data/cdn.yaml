@@ -1,0 +1,14 @@
+cdnProviders:
+  - name: bootcdn
+    baseUrl: 'https://cdn.bootcss.com/'
+  - name: staticfile
+    baseUrl: 'https://cdn.staticfile.org/'
+  - name: cdnjs
+    baseUrl: 'https://cdnjs.cloudflare.com/ajax/libs/'
+  - name: loli
+    baseUrl: 'https://cdnjs.loli.net/ajax/libs/'
+fontProviders:
+  - name: google
+    baseUrl: 'https://fonts.googleapis.com/css?family='
+  - name: loli
+    baseUrl: 'https://fonts.loli.net/css?family='

@@ -1,0 +1,4 @@
+{{ $posts := (len (where .Site.RegularPages "Section" "==" "posts")) }}
+{{ $categories := (len .Site.Taxonomies.categories) }}
+{{ $tags := (len .Site.Taxonomies.tags) }}
+{{ return (dict "posts" $posts "categories" $categories "tags" $tags) }}

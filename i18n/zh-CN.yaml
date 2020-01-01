@@ -1,0 +1,91 @@
+navbar_home:
+  other: '主页'
+navbar_archives:
+  other: '归档'
+navbar_categories:
+  other: '分类'
+navbar_tags:
+  other: '标签'
+navbar_about:
+  other: '关于'
+
+common_archive:
+  one: '归档'
+  other: '归档'
+common_category:
+  one: '分类'
+  other: '分类'
+common_tag:
+  one: '标签'
+  other: '标签'
+common_post:
+  one: '文章'
+  other: '文章'
+common_prev:
+  other: '上一页'
+common_next:
+  other: '下一页'
+
+widget_follow:
+  other: '关注我'
+widget_recents:
+  other: '最新文章'
+widget_links:
+  other: '链接'
+widget_tag_cloud:
+  other: '标签云'
+widget_catalogue:
+  other: '目录'
+widget_email_title:
+  other: '订阅邮件'
+widget_email_button:
+  other: '立即订阅'
+
+article_more:
+  other: '阅读更多'
+article_comments:
+  other: '评论'
+article_readtime:
+  one: '不到一分钟读完'
+  other: '{{ .Count }} 分钟读完'
+article_words:
+  other: '大约 {{ .WordCount }} 个字'
+
+donate_title:
+  other: '喜欢这篇文章？打赏一下作者吧'
+donate_alipay:
+  other: '支付宝'
+donate_wechat:
+  other: '微信'
+donate_paypal:
+  other: 'Paypal'
+donate_patreon:
+  other: 'Patreon'
+
+plugin_back2top:
+  other: '回到顶端'
+plugin_visit:
+  other: '次访问'
+plugin_visitor:
+  other: '共{{ . }}个访客'
+
+search_search:
+  other: '搜索'
+search_hint:
+  other: '想要查找什么...'
+
+insight_hint:
+  other: '想要查找什么...'
+insight_posts:
+  other: '文章'
+insight_pages:
+  other: '页面'
+insight_categories:
+  other: '分类'
+insight_tags:
+  other: '标签'
+insight_untitled:
+  other: '(无标题)'
+
+date_formate_archive:
+  other: '2006年 1月'

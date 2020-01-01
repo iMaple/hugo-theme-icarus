@@ -1,0 +1,19 @@
+{{ $cdnProvider := (.Scratch.Get "cdn").cdn }}
+
+<script type="text/javascript" src="{{ printf "%sjquery/3.4.1/jquery.min.js" $cdnProvider }}"></script>
+<script type="text/javascript" src="{{ printf "%smoment.js/2.24.0/moment-with-locales.min.js" $cdnProvider }}"></script>
+
+<script>moment.locale({{ .Site.LanguageCode | default "en" }});</script>
+
+{{ if .Site.Params.article.code.clipboard }}
+    <script type="text/javascript" src="{{ printf "%sclipboard.js/2.0.4/clipboard.min.js" $cdnProvider }}" defer></script>
+{{ end }}
+
+{{ range .Site.Params.plugins }}
+    {{ $path := printf "plugin/%s.html" .name }}
+    {{ if and .enable (templates.Exists (printf "partials/%s" $path)) }}
+        {{ partial $path (dict "head" false "baseUrl" $cdnProvider) }}
+    {{ end }}
+{{ end }}
+
+<script type="text/javascript" src="{{ "js/main.js" | relURL }}" defer></script>

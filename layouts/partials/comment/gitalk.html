@@ -1,0 +1,18 @@
+<div id="comment-container"></div>
+{{ $cdnProvider := (.Scratch.Get "cdn").cdn }}
+<link rel="stylesheet" href="{{ printf "%sgitalk/1.5.0/gitalk.min.css" $cdnProvider }}">
+<script type="text/javascript" src="{{ printf "%sgitalk/1.5.0/gitalk.min.js" $cdnProvider }}"></script>
+<script>
+  {{ $comment := .Scratch.Get "comment" }}
+  const gitalk = new Gitalk({
+    clientID: {{ $comment.client_id }},
+    clientSecret: {{ $comment.client_secret }},
+    id: {{ md5 .Permalink }},
+    repo: {{ $comment.repo }},
+    owner: {{ $comment.owner }},
+    admin: {{ $comment.admin }},
+    createIssueManually: {{ $comment.create_issue_manually | default false }},
+    distractionFreeMode: {{ $comment.distraction_free_mode | default false }}
+  });
+  gitalk.render('comment-container');
+</script>

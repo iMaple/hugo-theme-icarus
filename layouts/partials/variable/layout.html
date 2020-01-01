@@ -1,0 +1,14 @@
+{{ $column := 1 }}
+{{ $left_widget := 0 }}
+{{ $right_widget := 0 }}
+{{ range .Site.Params.widgets }}
+    {{ if eq .position "left" }}
+        {{ $left_widget = ($left_widget | add 1) }}
+    {{ end }}
+    {{ if eq .position "right" }}
+        {{ $right_widget = ($right_widget | add 1) }}
+    {{ end }}
+{{ end }}
+{{ if gt $left_widget 0 }}{{ $column = ($column | add 1) }}{{ end }}
+{{ if gt $right_widget 0 }}{{ $column = ($column | add 1) }}{{ end }}
+{{ return (dict "column" $column "left_widget" $left_widget "right_widget" $right_widget) }}

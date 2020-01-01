@@ -1,0 +1,92 @@
+<div class="card">
+    {{ if and .Site.Params.article.thumbnail .Params.thumbnail }}
+        <div class="card-image">
+            <span class="image is-7by1">
+                <img class="thumbnail" src="{{ .Params.thumbnail }}" alt="{{ .Title }}">
+            </span>
+        </div>
+    {{ end }}
+    <div class="card-content article">
+        {{ if eq .Section "posts" }}
+            <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <time class="level-item has-text-grey" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-01" }}</time>
+                    {{ with .Params.categories }}
+                        <div class="level-item">
+                            {{ $categories := split (index . 0) "-#-" }}
+                            {{ range $index, $value := $categories }}
+                                <a class="has-link-grey" href="/categories/{{ $value }}">{{ $value }}</a>
+                                {{ if ne (add $index 1) (len $categories) }}&nbsp;/&nbsp;{{ end }}
+                            {{ end }}
+                        </div>
+                    {{ end }}
+                    {{ if and .Site.Params.article.readtime }}
+                        <span class="level-item has-text-grey">
+                        {{ i18n "article_readtime" .ReadingTime }} ({{ i18n "article_words" . }})
+                    </span>
+                    {{ end }}
+                    {{ if (.Scratch.Get "have").busuanzi }}
+                        <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                        <i class="far fa-eye">&nbsp;</i>
+                        <span id="busuanzi_value_page_pv">0</span><span>&nbsp;{{ i18n "plugin_visit" }}</span>
+                    </span>
+                    {{ end }}
+                </div>
+            </div>
+        {{ end }}
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">{{ .Title }}</h1>
+        <div class="content">{{ .Content }}</div>
+        {{ with .Params.tags }}
+            <div class="level is-size-7 is-uppercase">
+                <div class="level-start">
+                    <div class="level-item">
+                        <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                        {{ $tags := . }}
+                        {{ range $index, $value := $tags }}
+                            <a class="has-link-grey" href="/tags/{{ $value }}" rel="tag">{{ $value }}</a>
+                            {{ if ne (add $index 1) (len $tags) }},&nbsp;{{ end }}
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        {{ end }}
+    </div>
+</div>
+
+<!-- Todo -->
+
+{{ if or .NextInSection .PrevInSection }}
+    <div class="card card-transparent">
+        <div class="level post-navigation is-flex-wrap is-mobile">
+            {{ with .PrevInSection }}
+                <div class="level-start">
+                    <a class="level level-item has-link-grey <%= !post.prev ? 'is-hidden-mobile' : '' %> article-nav-prev"
+                       href="{{ .Permalink }}">
+                        <i class="level-item fas fa-chevron-left"></i>
+                        <span class="level-item">{{ .Title }}</span>
+                    </a>
+                </div>
+            {{ end }}
+            {{ with .NextInSection }}
+                <div class="level-end">
+                    <a class="level level-item has-link-grey <%= !post.next ? 'is-hidden-mobile' : '' %> article-nav-next"
+                       href="{{ .Permalink }}">
+                        <span class="level-item">{{ .Title }}</span>
+                        <i class="level-item fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            {{ end }}
+        </div>
+    </div>
+{{ end }}
+
+{{ if and .Site.Params.comment.type (.Params.comment | default true) }}
+    <div class="card">
+        <div class="card-content">
+            <h3 class="title is-5 has-text-weight-normal">{{ i18n "article_comments" }}</h3>
+            {{ .Scratch.Set "comment" .Site.Params.comment }}
+            {{ partialCached (printf "comment/%s.html" .Site.Params.comment.type) . .Permalink }}
+            {{ .Scratch.Delete "comment" }}
+        </div>
+    </div>
+{{ end }}

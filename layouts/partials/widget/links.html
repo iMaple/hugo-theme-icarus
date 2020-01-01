@@ -1,0 +1,24 @@
+{{ $widget := .Scratch.Get "widget" }}
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                {{ i18n "widget_links" }}
+            </h3>
+            <ul class="menu-list">
+                {{ range $widget.links }}
+                    <li>
+                        <a class="level is-mobile" href="{{ .url }}" target="_blank" rel="noopener">
+                            <span class="level-left"><span class="level-item">{{ .name }}</span></span>
+                            <span class="level-right">
+                                <span class="level-item tag">
+                                    {{ (urls.Parse .url).Host }}
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                {{ end }}
+            </ul>
+        </div>
+    </div>
+</div>

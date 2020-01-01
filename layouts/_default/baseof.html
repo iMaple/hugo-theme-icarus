@@ -1,0 +1,24 @@
+{{ partial "common/variable.html" . }}
+{{ $column := (.Scratch.Get "layout").column }}
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+{{ partial "common/head.html" . }}
+<body class="is-{{ $column }}-column">
+{{ partialCached "common/header.html" . .RelPermalink }}
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column has-order-2 column-main
+                {{ if eq $column 1 }}{{ "is-12" }}
+                {{ else if eq $column 2 }}{{ "is-8-tablet is-8-desktop is-8-widescreen" }}
+                {{ else if eq $column 3 }}{{ "is-8-tablet is-8-desktop is-6-widescreen" }}{{ end }}">
+                {{ block "main" . }}{{ end }}
+            </div>
+            {{ partialCached "common/widget.html" . }}
+        </div>
+    </div>
+</section>
+{{ partialCached "common/footer.html" . }}
+{{ partialCached "common/script.html" . }}
+</body>
+</html>

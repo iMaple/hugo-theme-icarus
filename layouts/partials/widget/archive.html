@@ -1,0 +1,27 @@
+{{ $widget := .Scratch.Get "widget" }}
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">{{ i18n "common_archive" 2 }}</h3>
+            <ul class="menu-list">
+                {{ range (.Site.RegularPages.GroupByDate "2006-01" ) }}
+                    {{ $count := 0 }}
+                    {{ range (where .Pages "Type" "==" "posts") }}
+                        {{ $count = add $count 1 }}
+                    {{ end }}
+                    <li>
+                        <a class="level is-marginless" href="/archives/#{{ .Key }}">
+                            <span class="level-start">
+                                <span class="level-item">{{ dateFormat (i18n "date_formate_archive") (printf "%s-01" .Key) }}</span>
+                            </span>
+                            <span class="level-end">
+                                <span class="level-item tag">{{ $count }}</span>
+                            </span>
+                        </a>
+                    </li>
+                {{ end }}
+            </ul>
+        </div>
+    </div>
+</div>
