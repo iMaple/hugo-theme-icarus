@@ -1,0 +1,16 @@
+{{ $comment := .Scratch.Get "comment" }}
+{{ if and $comment.appid $comment.conf }}
+    <div id="SOHUCS" sid="{{ md5 .Permalink }}"></div>
+    <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+    <script type="text/javascript">
+      window.changyan.api.config({
+        appid: {{ $comment.appid }},
+        conf: {{ $comment.conf }}
+      });
+    </script>
+{{ else }}
+    <div class="notification is-danger">
+        You forgot to set the <code>appid</code> and <code>conf</code> for Changyan. Please set it in
+        <code>config.yml</code>.
+    </div>
+{{ end }}

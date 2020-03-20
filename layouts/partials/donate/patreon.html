@@ -1,0 +1,13 @@
+{{ $donate := .Scratch.Get "donate" }}
+{{ if $donate.url }}
+<a class="button is-danger donate" href="{{ $donate.url }}" target="_blank" rel="noopener">
+    <span class="icon is-small">
+        <i class="fab fa-patreon"></i>
+    </span>
+    <span>{{ i18n (printf "donate_%s" $donate.type) }}</span>
+</a>
+{{ else }}
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>config.yml</code>.
+</div>
+{{ end }}

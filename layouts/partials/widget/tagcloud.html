@@ -3,11 +3,10 @@
         <h3 class="menu-label">
             {{ i18n "widget_tag_cloud" }}
         </h3>
-        <!-- Todo -->
         {{ $tags := .Site.Taxonomies.tags }}
         {{ if gt (len $tags) 0 }}
-            {{ $maxSize := 2.0 }}
-            {{ $minSize := 1.0 }}
+            {{ $maxSize := 20.0 }}
+            {{ $minSize := 10.0 }}
             {{ $sizeSpread := (sub $maxSize $minSize) }}
 
             {{ $maxCount := (index $tags.ByCount 0).Count }}
@@ -21,7 +20,7 @@
             {{ range $tags.Alphabetical }}
                 {{ $count := .Count }}
                 {{ $size := (add $minSize (mul $sizeStep (sub $count $minCount))) }}
-                <a href="/tags/{{ .Term }}/" style='font-size:{{ $size }}em'>{{ .Term }}</a>
+                <a href="/tags/{{ .Term }}/" style='font-size:{{ $size }}px'>{{ .Term }}</a>
             {{ end }}
         {{ end }}
     </div>

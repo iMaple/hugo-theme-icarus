@@ -1,4 +1,5 @@
-{{ .Scratch.Set "layout" (partialCached "variable/layout.html" .) }}
+{{ .Scratch.Set "cdn" (partialCached "variable/cdn.html" .) }}
 {{ .Scratch.Set "count" (partialCached "variable/count.html" .) }}
 {{ .Scratch.Set "have" (partialCached "variable/have.html" .) }}
-{{ .Scratch.Set "cdn" (partialCached "variable/cdn.html" .) }}
+{{ .Scratch.Set "layout" (partialCached "variable/layout.html" .) }}
+{{ .Scratch.Set "title" (partial "variable/title.html" .) }}

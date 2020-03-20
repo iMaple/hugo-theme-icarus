@@ -7,24 +7,25 @@
         {{ range first $widget.amount (where .Site.RegularPages.ByDate.Reverse "Section" "==" "posts") }}
             <article class="media">
                 {{ if .Site.Params.article.thumbnail }}
-                <a href="{{ .Permalink }}" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail"
-                             src="{{ with .Params.thumbnail }}{{ . }}{{ else }}{{ "images/thumbnail.svg" | relURL }}{{ end }}"
-                             alt="{{ .Title }}">
-                    </p>
-                </a>
+                    <a class="media-left" href="{{ .Permalink }}">
+                        <p class="image is-64x64">
+                            <img class="thumbnail"
+                                 src="{{ with .Params.thumbnail }}{{ . }}{{ else }}{{ "img/thumbnail.svg" | relURL }}{{ end }}"
+                                 alt="{{ .Title }}">
+                        </p>
+                    </a>
                 {{ end }}
                 <div class="media-content">
                     <div class="content">
-                        <div><time class="has-text-grey is-size-7 is-uppercase" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-01" }}</time></div>
-                        <a href="{{ .Permalink }}" class="title has-link-black-ter is-size-6 has-text-weight-normal">{{ .LinkTitle }}</a>
+                        <div>
+                            <time class="has-text-grey is-size-7 is-uppercase"
+                                  datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
+                        </div>
+                        <a class="title has-link-black-ter is-size-6 has-text-weight-normal"
+                           href="{{ .Permalink }}">{{ .LinkTitle }}</a>
                         <p class="is-size-7 is-uppercase">
-                            {{ $categories := split (index .Params.categories 0) "-#-" }}
-                            {{ range $index, $value := $categories }}
-                                <a class="has-link-grey" href="#">{{ $value }}</a>
-                                {{ if ne (add $index 1) (len $categories) }}&nbsp;/&nbsp;{{ end }}
-                            {{ end }}
+                            {{ $categories := index .Params.categories 0 }}
+                            <a class="has-link-grey" href="/categories/{{ $categories }}">{{ $categories }}</a>
                         </p>
                     </div>
                 </div>

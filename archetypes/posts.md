@@ -10,6 +10,7 @@ thumbnail: ""
 
 toc: true
 comment: true
+donate: true
 
 date: {{ .Date }}
 lastmod: {{ .Date }}

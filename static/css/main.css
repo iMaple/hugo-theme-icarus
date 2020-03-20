@@ -150,6 +150,7 @@ img.thumbnail {
 }
 .footer {
     background: #fff;
+    padding-bottom: 3rem;
 }
 .footer .field .button {
     background: transparent;
@@ -418,13 +419,19 @@ img.thumbnail {
 }
 .content code,
 .content pre {
+    font-family: "Source Code Pro", monospace, "Microsoft YaHei";
+}
+.content pre {
     font-size: 0.85em;
-    font-family: family-mono;
 }
 .content code {
-    color: #ff3860;
-    background: transparent;
     padding: 0;
+    background: transparent;
+}
+.content > code,
+.content :not(pre) > code {
+    font-size: 0.85em;
+    color: #ff3860;
 }
 .content blockquote footer strong + cite {
     margin-left: 0.5em;
@@ -432,81 +439,77 @@ img.thumbnail {
 /* ---------------------------------
  *        Fix code highlight
  * --------------------------------- */
-figure.highlight {
+div.highlight {
     padding: 0;
     width: 100%;
     position: relative;
     margin: 1em 0 1em !important;
 }
-figure.highlight.folded .highlight-body {
+div.highlight.folded .highlight-body {
     height: 0;
 }
-figure.highlight pre,
-figure.highlight table tr:hover {
+div.highlight pre,
+div.highlight table tr:hover {
     color: inherit;
     background: transparent;
 }
-figure.highlight table {
+div.highlight table {
     width: auto;
 }
-figure.highlight table tr td {
+div.highlight table tr td {
     border: none;
 }
-figure.highlight table tr:not(:first-child) td {
+div.highlight table tr:not(:first-child) td {
     padding-top: 0;
 }
-figure.highlight table tr:not(:last-child) td {
+div.highlight table tr:not(:last-child) td {
     padding-bottom: 0;
 }
-figure.highlight pre {
+div.highlight pre {
     padding: 0;
     overflow: visible;
 }
-figure.highlight pre .line,
-figure.highlight pre code .hljs {
+div.highlight pre code > span,
+div.highlight pre .line,
+div.highlight pre code .hljs {
     line-height: 1.5rem;
 }
-figure.highlight figcaption,
-figure.highlight .gutter {
+div.highlight figcaption,
+div.highlight .gutter {
     background: rgba(200, 200, 200, 0.15);
 }
-figure.highlight figcaption {
+div.highlight figcaption {
+    margin: 0 !important;
     padding: 0.3em 0.75em;
     text-align: left;
     font-style: normal;
     font-size: 0.8em;
 }
-figure.highlight figcaption:after {
-    clear: both;
-    content: " ";
-    display: table;
-}
-figure.highlight figcaption span {
+div.highlight figcaption span {
     font-weight: 500;
     font-family: "Source Code Pro", monospace, "Microsoft YaHei";
 }
-figure.highlight figcaption .fold,
-figure.highlight figcaption a {
+div.highlight figcaption .fold,
+div.highlight figcaption a {
     color: #9a9a9a;
 }
-figure.highlight figcaption a {
-    float: right;
+div.highlight figcaption a {
     margin-left: 0.5em;
 }
-figure.highlight figcaption .fold {
+div.highlight figcaption .fold {
     margin-right: 0.5em;
     cursor: pointer;
 }
-figure.highlight .highlight-body {
+div.highlight .highlight-body {
     overflow: auto;
 }
-figure.highlight .gutter {
+div.highlight .gutter {
     text-align: right;
 }
-figure.highlight .tag,
-figure.highlight .title,
-figure.highlight .number,
-figure.highlight .section {
+div.highlight .tag,
+div.highlight .title,
+div.highlight .number,
+div.highlight .section {
     display: inherit;
     font: inherit;
     margin: inherit;

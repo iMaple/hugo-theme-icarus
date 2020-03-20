@@ -1,14 +1,15 @@
-{{ if .head }}
+{{ $plugin := .Scratch.Get "plugin" }}
+{{ if $plugin.head }}
 {{ else }}
-    <script type="text/javascript" src="{{ printf "%smathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" .baseUrl }}" defer></script>
+    <script type="text/javascript" src="{{ printf "%smathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" $plugin.baseUrl }}" defer></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            MathJax.Hub.Config({
-                'HTML-CSS': {matchFontHeight: false},
-                SVG: {matchFontHeight: false},
-                CommonHTML: {matchFontHeight: false},
-                tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
-            });
+      document.addEventListener('DOMContentLoaded', function () {
+        MathJax.Hub.Config({
+          'HTML-CSS': {matchFontHeight: false},
+          SVG: {matchFontHeight: false},
+          CommonHTML: {matchFontHeight: false},
+          tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
         });
+      });
     </script>
 {{ end }}

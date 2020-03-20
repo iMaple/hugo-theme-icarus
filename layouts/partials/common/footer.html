@@ -10,7 +10,7 @@
                     {{ end }}
                 </a>
                 <p class="is-size-7">
-                    &copy; {{ now.Format "2006" }} {{ .Site.Author.name }}&nbsp;
+                    &copy; {{ if gt (now.Format "2006") .Site.Params.site.since }}{{ printf "%s - " .Site.Params.site.since }}{{ end }}{{ now.Format "2006" }} {{ .Site.Author.name }}&nbsp;
                     Powered by
                     <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &
                     <a href="https://github.com/iMaple/hugo-theme-icarus/" target="_blank" rel="noopener">Icarus</a>

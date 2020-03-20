@@ -1,0 +1,22 @@
+{{ $comment := .Scratch.Get "comment" }}
+<div id="disqus_thread">
+    {{ if $comment.shortname }}
+    <script>
+      const disqus_config = function () {
+        this.page.url = {{ .Permalink }};
+        this.page.identifier = {{ md5 .Permalink }};
+      };
+      (function () {
+        const d = document, s = d.createElement('script');
+        s.src = '//' + {{ $comment.shortname }} +'.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    {{ else }}
+    <div class="notification is-danger">
+        You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>config.yml</code>.
+    </div>
+    {{ end }}
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>

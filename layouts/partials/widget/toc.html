@@ -1,1 +1,12 @@
-<!-- Todo -->
+{{ if and (.Params.toc | default true) (eq .Page.Kind "page") }}
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">{{ i18n "widget_catalogue" 2 }}</h3>
+                {{ $toc := .Scratch.Get "toc" }}
+                {{ .Scratch.Delete "toc" }}
+                <div class="menu-list">{{ $toc }}</div>
+            </div>
+        </div>
+    </div>
+{{ end }}

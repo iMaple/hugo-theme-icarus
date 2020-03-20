@@ -5,18 +5,18 @@
                 {{ if eq .Data.Plural "categories" }}
                     <ul>
                         <li><a href="/categories">{{ i18n "common_category" 2 }}</a></li>
-                        <li class="is-active"><a href="#" aria-current="page">{{- .Title }}</a></li>
+                        <li class="is-active"><a href="#" aria-current="page">{{ .Title }}</a></li>
                     </ul>
                 {{ else if eq .Data.Plural "tags" }}
                     <ul>
                         <li><a href="/tags">{{ i18n "common_tag" 2 }}</a></li>
-                        <li class="is-active"><a href="#" aria-current="page">{{- .Title }}</a></li>
+                        <li class="is-active"><a href="#" aria-current="page">{{ .Title }}</a></li>
                     </ul>
                 {{ end }}
             </nav>
         </div>
     </div>
-    {{ $paginator := (.Paginator 10).Pages }}
+    {{ $paginator := .Paginator.Pages }}
     {{ range $paginator }}
         {{ partial "articles.html" . }}
     {{ end }}

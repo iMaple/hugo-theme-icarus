@@ -1,4 +1,5 @@
-{{ if .head }}
+{{ $plugin := .Scratch.Get "plugin" }}
+{{ if $plugin.head }}
 {{ else }}
-    <script src="{{ printf "%ssmoothscroll/1.4.10/SmoothScroll.min.js" .baseUrl }}" async></script>
+    <script src="{{ printf "%ssmoothscroll/1.4.10/SmoothScroll.min.js" $plugin.baseUrl }}" async></script>
 {{ end }}

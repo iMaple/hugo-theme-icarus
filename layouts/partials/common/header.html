@@ -13,7 +13,7 @@
             <div class="navbar-start">
                 {{ $link := replaceRE "(^/[^/]*)/?$" "$1" .RelPermalink }}
                 {{ range sort .Site.Menus.main "Weight" }}
-                    <a class="navbar-item{{ if eq .URL $link }}{{ " is-active" }}{{ end }}"
+                    <a class="navbar-item {{ if eq .URL $link }}{{ "is-active" }}{{ end }}"
                        href="{{ .URL }}">{{ i18n (printf "navbar_%s" .Identifier) }}</a>
                 {{ end }}
             </div>
@@ -23,7 +23,11 @@
                         <i class="{{ .icon }}"></i>
                     </a>
                 {{ end }}
-                {{/*{{ if (.Params.notoc | default false) }}{{ end }}*/}}
+                {{ if and (.Scratch.Get "have").toc (.Params.toc | default true) (eq .Page.Kind "page") }}
+                    <a class="navbar-item is-hidden-tablet catalogue" title="{{ i18n "widget_catalogue" 2 }}" href="javascript:;">
+                        <i class="fas fa-list-ul"></i>
+                    </a>
+                {{ end }}
                 {{ if .Site.Params.navbar.search.type }}
                     <a class="navbar-item search" title="{{ i18n "search_search"}}" href="javascript:;">
                         <i class="fas fa-search"></i>
@@ -34,5 +38,7 @@
     </div>
 </nav>
 {{ with .Site.Params.navbar.search.type }}
+    {{ $.Scratch.Set "search" $.Site.Params.navbar.search }}
     {{ partial (printf "search/%s.html" .) $ }}
+    {{ $.Scratch.Delete "search" }}
 {{ end }}

@@ -4,4 +4,12 @@
         {{ $busuanzi = true }}
     {{ end }}
 {{ end }}
-{{ return (dict "busuanzi" $busuanzi) }}
+
+{{ $toc := false }}
+{{ range .Site.Params.widgets }}
+    {{ if eq .type "toc" }}
+        {{ $toc = true }}
+    {{ end }}
+{{ end }}
+
+{{ return (dict "busuanzi" $busuanzi "toc" $toc) }}

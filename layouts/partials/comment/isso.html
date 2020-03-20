@@ -1,0 +1,9 @@
+{{ $comment := .Scratch.Get "comment" }}
+{{ if $comment.url }}
+    <div id="isso-thread"></div>
+    <script data-isso="//{{ $comment.url }}" src="//{{ $comment.url }}/js/embed.min.js"></script>
+{{ else }}
+    <div class="notification is-danger">
+        You forgot to set the <code>url</code> for Isso. Please set it in <code>config.yml</code>.
+    </div>
+{{ end }}

@@ -67,7 +67,7 @@ plugin_back2top:
 plugin_visit:
   other: '%s visits'
 plugin_visitor:
-  other: 'Visited by %s users'
+  other: 'Visited by {{ . }} users'
 
 search_search:
   other: 'Search'

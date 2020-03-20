@@ -1,18 +1,27 @@
-<div id="comment-container"></div>
-{{ $cdnProvider := (.Scratch.Get "cdn").cdn }}
-<link rel="stylesheet" href="{{ printf "%sgitalk/1.5.0/gitalk.min.css" $cdnProvider }}">
-<script type="text/javascript" src="{{ printf "%sgitalk/1.5.0/gitalk.min.js" $cdnProvider }}"></script>
-<script>
-  {{ $comment := .Scratch.Get "comment" }}
-  const gitalk = new Gitalk({
-    clientID: {{ $comment.client_id }},
-    clientSecret: {{ $comment.client_secret }},
-    id: {{ md5 .Permalink }},
-    repo: {{ $comment.repo }},
-    owner: {{ $comment.owner }},
-    admin: {{ $comment.admin }},
-    createIssueManually: {{ $comment.create_issue_manually | default false }},
-    distractionFreeMode: {{ $comment.distraction_free_mode | default false }}
-  });
-  gitalk.render('comment-container');
-</script>
+{{ $comment := .Scratch.Get "comment" }}
+{{ if and $comment.owner $comment.repo $comment.client_id $comment.client_secret }}
+    <div id="comment-container"></div>
+    {{ $cdnProvider := (.Scratch.Get "cdn").cdn }}
+    <link rel="stylesheet" href="{{ printf "%sgitalk/1.6.0/gitalk.min.css" $cdnProvider }}"/>
+    <script type="text/javascript" src="{{ printf "%sgitalk/1.6.0/gitalk.min.js" $cdnProvider }}"></script>
+    <script>
+        {{ $comment := .Scratch.Get "comment" }}
+        const gitalk = new Gitalk({
+          clientID: {{ $comment.client_id }},
+          clientSecret: {{ $comment.client_secret }},
+          id: {{ md5 .Permalink }},
+          repo: {{ $comment.repo }},
+          owner: {{ $comment.owner }},
+          admin: {{ $comment.admin }},
+          createIssueManually: {{ $comment.create_issue_manually | default false }},
+          distractionFreeMode: {{ $comment.distraction_free_mode | default false }}
+        });
+        gitalk.render('comment-container');
+    </script>
+{{ else }}
+    <div class="notification is-danger">
+        You forgot to set the <code>owner</code>, <code>admin</code>, <code>repo</code>, <code>client_id</code>, or
+        <code>client_secret</code> for Gittalk.
+        Please set it in <code>config.yml</code>.
+    </div>
+{{ end }}

@@ -5,6 +5,23 @@
 
 <script>moment.locale({{ .Site.LanguageCode | default "en" }});</script>
 
+<script>
+  const IcarusThemeSettings = {
+    site: {
+      url: '',
+      external_link: ''
+    },
+    article: {
+      highlight: {
+        clipboard: {{ .Site.Params.article.code.clipboard }},
+        fold: {{ .Site.Params.article.code.fold }}
+      }
+    }
+  };
+</script>
+
+<script type="text/javascript" src="{{ printf "%shighlight.js/9.18.1/highlight.min.js" $cdnProvider }}"></script>
+
 {{ if .Site.Params.article.code.clipboard }}
     <script type="text/javascript" src="{{ printf "%sclipboard.js/2.0.4/clipboard.min.js" $cdnProvider }}" defer></script>
 {{ end }}
@@ -12,7 +29,11 @@
 {{ range .Site.Params.plugins }}
     {{ $path := printf "plugin/%s.html" .name }}
     {{ if and .enable (templates.Exists (printf "partials/%s" $path)) }}
-        {{ partial $path (dict "head" false "baseUrl" $cdnProvider) }}
+        {{ $.Scratch.Set "plugin" . }}
+        {{ $.Scratch.SetInMap "plugin" "head" false }}
+        {{ $.Scratch.SetInMap "plugin" "baseUrl" $cdnProvider }}
+        {{ partial $path $ }}
+        {{ $.Scratch.Delete "plugin" }}
     {{ end }}
 {{ end }}
 

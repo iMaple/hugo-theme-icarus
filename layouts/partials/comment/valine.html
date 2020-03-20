@@ -1,0 +1,22 @@
+{{ $cdnProvider := (.Scratch.Get "cdn").cdn }}
+{{ $comment := .Scratch.Get "comment" }}
+{{ if and $comment.app_id $comment.app_key }}
+    <div id="valine-thread" class="content"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@1.3.10/dist/Valine.min.js"></script>
+    <script>
+      new Valine({
+        el: '#valine-thread',
+        notify: {{ $comment.notify }},
+        verify: {{ $comment.verify }},
+        app_id: {{ $comment.app_id }},
+        app_key: {{ $comment.app_key }},
+        placeholder: {{ $comment.placeholder }}
+      });
+    </script>
+{{ else }}
+    <div class="notification is-danger">
+        You forgot to set the <code>app_id</code> or <code>app_key</code> for Valine. Please set it in
+        <code>config.yml</code>.
+    </div>
+{{ end }}

@@ -1,0 +1,15 @@
+{{ $comment := .Scratch.Get "comment" }}
+{{ if $comment.repo }}
+    <script src="https://utteranc.es/client.js"
+            repo="{{ $comment.repo }}"
+            issue-term="{{ $comment.issue_term }}"
+            label="{{ $comment.label }}"
+            theme="{{ $comment.theme }}"
+            crossorigin="anonymous"
+            async>
+    </script>
+{{ else }}
+    <div class="notification is-danger">
+        You forgot to set the <code>repo</code> for utteranc.es Please set it in <code>config.yml</code>.
+    </div>
+{{ end }}

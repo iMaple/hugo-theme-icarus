@@ -5,9 +5,17 @@
                 {{ i18n "common_category" 2 }}
             </h3>
             <ul class="menu-list">
-                <!-- Todo -->
                 {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
-                    {{ partial "category_sub.html" (dict "key" $name "count" .Count) }}
+                    <li>
+                        <a class="level is-marginless" href="/categories/{{ $name }}/">
+                            <span class="level-start">
+                                <span class="level-item">{{ $name }}</span>
+                            </span>
+                            <span class="level-end">
+                                <span class="level-item tag">{{ .Count }}</span>
+                            </span>
+                        </a>
+                    </li>
                 {{ end }}
             </ul>
         </div>

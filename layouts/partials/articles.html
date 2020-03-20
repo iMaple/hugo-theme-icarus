@@ -9,14 +9,11 @@
             <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
                 <div class="level-left">
                     <time class="level-item has-text-grey"
-                          datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-01" }}</time>
+                          datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
                     {{ with .Params.categories }}
                         <div class="level-item">
-                            {{ $categories := split (index . 0) "-#-" }}
-                            {{ range $index, $value := $categories }}
-                                <a class="has-link-grey" href="#">{{ $value }}</a>
-                                {{ if ne (add $index 1) (len $categories) }}&nbsp;/&nbsp;{{ end }}
-                            {{ end }}
+                            {{ $categories := index . 0 }}
+                            <a class="has-link-grey" href="/categories/{{ $categories }}">{{ $categories }}</a>
                         </div>
                     {{ end }}
                     {{ if and .Site.Params.article.readtime }}
@@ -35,7 +32,8 @@
             <div class="level is-mobile">
                 <div class="level-start">
                     <div class="level-item">
-                        <a class="button is-size-7 is-light" href="{{ .RelPermalink }}#more">{{ i18n "article_more" }}</a>
+                        <a class="button is-size-7 is-light"
+                           href="{{ .RelPermalink }}#more">{{ i18n "article_more" }}</a>
                     </div>
                 </div>
             </div>
