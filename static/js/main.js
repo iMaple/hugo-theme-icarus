@@ -122,4 +122,29 @@
     $mask.on('click', toggleToc);
     $('.navbar-main .catalogue').on('click', toggleToc);
   }
+
+  const $ntoc = $('#TableOfContents');
+  if ($ntoc.length > 0) {
+    function buildToc(next, prefix, level) {
+      next.each(function (index) {
+        const a = $(this).children('a');
+        a.addClass('is-flex');
+        const text = a.text();
+        const sn = prefix + (level === 1 ? '' : '.') + (index + 1);
+        const span = `<span class="has-mr-6">${sn}</span><span>${text}</span>`;
+        a.text('');
+        a.append(span);
+        if ($(this).children('ul')) {
+          buildToc($(this).children('ul').children(), sn);
+        }
+      });
+    }
+
+    const ul = $ntoc.children('ul');
+    ul.addClass('menu-list');
+    if (ul) {
+      buildToc(ul.children(), '', 1);
+    }
+  }
+
 })(jQuery);

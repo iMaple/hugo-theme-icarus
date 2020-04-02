@@ -5,7 +5,7 @@
                 <h3 class="menu-label">{{ i18n "widget_catalogue" 2 }}</h3>
                 {{ $toc := .Scratch.Get "toc" }}
                 {{ .Scratch.Delete "toc" }}
-                <div class="menu-list">{{ $toc }}</div>
+                {{ $toc }}
             </div>
         </div>
     </div>
