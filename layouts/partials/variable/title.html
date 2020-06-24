@@ -1,9 +1,9 @@
 {{ $title := .Site.Title }}
 {{ if and (eq .Page.Kind "section") (eq .Page.Type "archives") }}{{ $title = printf "%s - %s" (i18n "common_archive" 2) .Site.Title }}
-{{ else if and (eq .Page.Kind "taxonomyTerm") (eq .Page.Type "categories") }}{{ $title = printf "%s - %s" (i18n "common_category" 2) .Site.Title }}
-{{ else if and (eq .Page.Kind "taxonomy") (eq .Page.Type "categories") }}{{ $title = (printf "%s: %s - %s" (i18n "common_category" 1) .Data.Term .Site.Title) }}
-{{ else if and (eq .Page.Kind "taxonomyTerm") (eq .Page.Type "tags") }}{{ $title = printf "%s - %s" (i18n "common_tag" 2) .Site.Title }}
-{{ else if and (eq .Page.Kind "taxonomy") (eq .Page.Type "tags") }}{{ $title = (printf "%s: %s - %s" (i18n "common_tag" 1) .Data.Term .Site.Title) }}
+{{ else if and (eq .Page.Kind "taxonomy") (eq .Page.Type "categories") }}{{ $title = printf "%s - %s" (i18n "common_category" 2) .Site.Title }}
+{{ else if and (eq .Page.Kind "term") (eq .Page.Type "categories") }}{{ $title = (printf "%s: %s - %s" (i18n "common_category" 1) .Data.Term .Site.Title) }}
+{{ else if and (eq .Page.Kind "taxonomy") (eq .Page.Type "tags") }}{{ $title = printf "%s - %s" (i18n "common_tag" 2) .Site.Title }}
+{{ else if and (eq .Page.Kind "term") (eq .Page.Type "tags") }}{{ $title = (printf "%s: %s - %s" (i18n "common_tag" 1) .Data.Term .Site.Title) }}
 {{ else if and (eq .Page.Kind "section") (eq .Page.Type "about") }}{{ $title = .Site.Title }}
 {{ end }}
 {{ return $title }}
