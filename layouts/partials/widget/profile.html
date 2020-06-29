@@ -2,18 +2,18 @@
 <div class="card widget">
     <div class="card-content">
         <nav class="level">
-            <div class="level-item has-text-centered" style="flex-shrink: 1">
+            <div class="level-item has-text-centered flex-shrink-1">
                 <div>
-                    <figure class="image is-128x128 has-mb-6">
-                        <img class="{{ with $widget.avatarRounded }}{{ "is-rounded" }}{{ end }}"
+                    <figure class="image is-128x128 mx-auto mb-2">
+                        <img class="avatar {{ with $widget.avatarRounded }}{{ "is-rounded" }}{{ end }}"
                              src="{{ $widget.avatar | relURL }}"
                              alt="{{ $widget.author }}">
                     </figure>
-                    {{ with $widget.author }}<p class="is-size-4 is-block">{{ . }}</p>{{ end }}
+                    {{ with $widget.author }}<p class="title is-size-4 is-block line-height-inherit">{{ . }}</p>{{ end }}
                     {{ with $widget.authorTitle}}<p class="is-size-6 is-block">{{ . }}</p>{{ end }}
                     {{ with $widget.location }}
-                        <p class="is-size-6 is-flex is-flex-center has-text-grey">
-                            <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <p class="is-size-6 is-flex justify-content-center">
+                            <i class="fas fa-map-marker-alt mr-1"></i>
                             <span>{{ . }}</span>
                         </p>
                     {{ end }}
@@ -24,33 +24,33 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">{{ i18n "common_post" 2 }}</p>
-                    <a href="/archives"><p class="title has-text-weight-normal">{{ (.Scratch.Get "count").posts }}</p></a>
+                    <a href="/archives"><p class="title">{{ (.Scratch.Get "count").posts }}</p></a>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">{{ i18n "common_category" 2 }}</p>
-                    <a href="/categories"><p class="title has-text-weight-normal">{{ (.Scratch.Get "count").categories }}</p></a>
+                    <a href="/categories"><p class="title">{{ (.Scratch.Get "count").categories }}</p></a>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">{{ i18n "common_tag" 2 }}</p>
-                    <a href="/tags"><p class="title has-text-weight-normal">{{ (.Scratch.Get "count").tags }}</p></a>
+                    <a href="/tags"><p class="title">{{ (.Scratch.Get "count").tags }}</p></a>
                 </div>
             </div>
         </nav>
         {{ with $widget.followLink }}
             <div class="level">
-                <a class="level-item button is-link is-rounded" href="{{ . }}"
+                <a class="level-item button is-primary is-rounded" href="{{ . }}"
                    target="_blank" rel="noopener">{{ i18n "widget_follow" }}</a>
             </div>
         {{ end }}
         <div class="level is-mobile">
             {{ range $widget.socialLinks }}
-                <a class="level-item button is-white is-marginless" title="{{ .name }}" href="{{ .url }}"
+                <a class="level-item button is-transparent is-marginless" title="{{ .name }}" href="{{ .url }}"
                    target="_blank" rel="noopener">
-                    <i class="{{ .icon }}"></i>
+                    {{ if .icon }}<i class="{{ .icon }}"></i>{{ else }}{{ .name }}{{ end }}
                 </a>
             {{ end }}
         </div>

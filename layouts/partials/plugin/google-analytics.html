@@ -1,15 +1,15 @@
 {{ $plugin := .Scratch.Get "plugin" }}
 {{ if $plugin.head }}
-{{ else }}
     <script src="https://www.googletagmanager.com/gtag/js?id={{ $plugin.tracking_id }}" async></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+        function gtag() {
+          dataLayer.push(arguments);
+        }
 
-      gtag('js', new Date());
-      gtag('config', {{ $plugin.tracking_id }});
+        gtag('js', new Date());
+        gtag('config', {{ $plugin.tracking_id }});
     </script>
+{{ else }}
 {{ end }}

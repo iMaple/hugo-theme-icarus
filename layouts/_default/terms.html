@@ -1,7 +1,0 @@
-{{ define "main" }}
-    {{ if eq .Data.Plural "tags" }}
-        {{ partial "tag.html" . }}
-    {{ else if eq .Data.Plural "categories" }}
-        {{ partial "category.html" . }}
-    {{ end }}
-{{ end }}

@@ -1,0 +1,15 @@
+{{ $plugin := .Scratch.Get "plugin" }}
+{{ if $plugin.head }}
+{{ else }}
+    <link rel="stylesheet" href="{{ printf "%skatex/0.11.1/katex.min.css" $plugin.baseUrl }}"/>
+    <script type="text/javascript" src="{{ printf "%skatex/0.11.1/katex.min.css" $plugin.baseUrl }}" defer></script>
+    <script type="text/javascript" src="{{ printf "%skatex/0.11.1/contrib/auto-render.min.js" $plugin.baseUrl }}" defer></script>
+    <script type="text/javascript" src="{{ printf "%skatex/0.11.1/contrib/mhchem.min.js" $plugin.baseUrl }}" defer></script>
+    <script>
+        window.addEventListener('load', function () {
+          document.querySelectorAll('[role="article"] > .content').forEach(function (element) {
+            renderMathInElement(element);
+          });
+        });
+    </script>
+{{ end }}

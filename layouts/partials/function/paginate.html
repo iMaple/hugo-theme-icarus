@@ -1,5 +1,5 @@
 {{ $current := .current }}
-{{ $total := .total }}
+{{ $last := .last }}
 {{ $delta := 1 }}
 {{ $left := sub $current $delta }}
 {{ $right := add (add $current $delta) 1 }}
@@ -7,23 +7,23 @@
 {{ $elements := slice }}
 {{ $l := 0 }}
 {{ $url := .url }}
-{{ range $i := (seq $total) }}
-    {{ if or (eq $i 1) (eq $i $total) (and (ge $i $left) (lt $i $right)) }}
+{{ range $i := (seq $last) }}
+    {{ if or (eq $i 1) (eq $i $last) (and (ge $i $left) (lt $i $right)) }}
         {{ $range = $range | append $i }}
     {{ end }}
 {{ end }}
 {{ range $i := $range }}
     {{ if $l }}
         {{ if eq (sub $i $l) 2 }}
-            {{ $elements = $elements | append (printf `<li><a class="pagination-link has-text-black-ter" href="%s">%d</a></li>` (index $url $l) (add $l 1)) }}
+            {{ $elements = $elements | append (printf `<li><a class="pagination-link" href="%s">%d</a></li>` (index $url $l) (add $l 1)) }}
         {{ else }}
             {{ if ne (sub $i $l) 1 }}
-                {{ $elements = $elements | append `<li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>` }}
+                {{ $elements = $elements | append `<li><span class="pagination-ellipsis">&hellip;</span></li>` }}
             {{ end }}
         {{ end }}
     {{ end }}
     {{ $class := "" }}
-    {{ if eq $current $i }}{{ $class = "is-current" }}{{ else }}{{ $class = "has-text-black-ter" }}{{ end }}
+    {{ if eq $current $i }}{{ $class = "is-current" }}{{ end }}
     {{ $elements = $elements | append (printf `<li><a class="pagination-link %s" href="%s">%d</a></li>` $class (index $url (sub $i 1)) $i) }}
     {{ $l = $i }}
 {{ end }}

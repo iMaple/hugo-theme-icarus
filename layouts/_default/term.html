@@ -1,0 +1,26 @@
+{{ define "main" }}
+    <div class="card">
+        <div class="card-content">
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+                {{ if eq .Data.Plural "categories" }}
+                    <ul>
+                        <li><a href="/categories">{{ i18n "common_category" 2 }}</a></li>
+                        <li class="is-active"><a href="#" aria-current="page">{{ .Title }}</a></li>
+                    </ul>
+                {{ else if eq .Data.Plural "tags" }}
+                    <ul>
+                        <li><a href="/tags">{{ i18n "common_tag" 2 }}</a></li>
+                        <li class="is-active"><a href="#" aria-current="page">{{ .Title }}</a></li>
+                    </ul>
+                {{ end }}
+            </nav>
+        </div>
+    </div>
+    {{ $paginator := .Paginator.Pages }}
+    {{ range $paginator }}
+        {{ partial "articles.html" . }}
+    {{ end }}
+    {{ if gt .Paginator.TotalPages 1 }}
+        {{ partial "misc/paginator.html" .Paginator }}
+    {{ end }}
+{{ end }}

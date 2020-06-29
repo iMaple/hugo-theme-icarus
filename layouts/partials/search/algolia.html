@@ -1,0 +1,41 @@
+{{ $search := .Scratch.Get "search" }}
+{{ $cdnProvider := (.Scratch.Get "cdn").cdn }}
+<div class="searchbox">
+    <div class="searchbox-container">
+        <div class="searchbox-header">
+            <div class="searchbox-input-container" id="algolia-input"></div>
+            <div class="is-flex" id="algolia-poweredby" style="margin:0 .5em 0 1em;align-items:center;line-height:0"></div>
+            <a class="searchbox-close" href="javascript:;">×</a>
+        </div>
+        {{ if and $search.application_id $search.api_key $search.index_name }}
+            <div class="searchbox-body"></div>
+            <div class="searchbox-footer"></div>
+        {{ else }}
+            <div class="notification is-danger">
+                It seems that you forget to set the <code>application_id</code>, <code>api_key</code> or <code>index_name</code> for the Aloglia. Please set it in <code>config.yaml</code>.
+            </div>
+        {{ end }}
+    </div>
+</div>
+{{ if and $search.application_id $search.api_key $search.index_name }}
+    <script type="text/javascript" src="{{ printf "%salgoliasearch/4.0.3/algoliasearch-lite.umd.min.js" $cdnProvider }}" defer></script>
+    <script type="text/javascript" src="{{ printf "%sinstantsearch.js/4.3.1/instantsearch.production.min.js" $cdnProvider }}" defer></script>
+    <script type="text/javascript" src="{{ "js/algolia.js" | relURL }}" defer></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      loadAlgolia(
+        {
+          applicationId: {{ $search.application_id }},
+          apiKey: {{ $search.api_key }},
+          indexName: {{ $search.index_name }}
+        },
+        {
+          hint: {{ i18n "search_hint" }},
+          no_result: {{ i18n "search_no_result" }},
+          untitled: {{ i18n "search_untitled" }},
+          empty_preview: {{ i18n "search_empty_preview" }}
+        }
+      );
+    });
+    </script>
+{{ end }}

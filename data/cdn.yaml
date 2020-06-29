@@ -1,6 +1,6 @@
 cdnProviders:
   - name: bootcdn
-    baseUrl: 'https://cdn.bootcss.com/'
+    baseUrl: 'https://cdn.bootcdn.net/ajax/libs/'
   - name: staticfile
     baseUrl: 'https://cdn.staticfile.org/'
   - name: cdnjs
@@ -9,6 +9,6 @@ cdnProviders:
     baseUrl: 'https://cdnjs.loli.net/ajax/libs/'
 fontProviders:
   - name: google
-    baseUrl: 'https://fonts.googleapis.com/css?family='
+    baseUrl: 'https://fonts.googleapis.com/css2?family='
   - name: loli
-    baseUrl: 'https://fonts.loli.net/css?family='
+    baseUrl: 'https://fonts.loli.net/css2?family='

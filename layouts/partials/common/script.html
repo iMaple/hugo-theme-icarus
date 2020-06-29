@@ -1,23 +1,26 @@
 {{ $cdnProvider := (.Scratch.Get "cdn").cdn }}
 
-<script type="text/javascript" src="{{ printf "%sjquery/3.4.1/jquery.min.js" $cdnProvider }}"></script>
-<script type="text/javascript" src="{{ printf "%smoment.js/2.24.0/moment-with-locales.min.js" $cdnProvider }}"></script>
+<script type="text/javascript" src="{{ printf "%sjquery/3.5.1/jquery.min.js" $cdnProvider }}"></script>
+<script type="text/javascript" src="{{ printf "%smoment.js/2.26.0/moment-with-locales.min.js" $cdnProvider }}"></script>
 
-<script>moment.locale({{ .Site.LanguageCode | default "en" }});</script>
+<script>moment.locale({{ .Site.Language.Lang | default "en" }});</script>
 
 <script>
-  const IcarusThemeSettings = {
-    site: {
-      url: '',
-      external_link: ''
-    },
-    article: {
-      highlight: {
-        clipboard: {{ .Site.Params.article.code.clipboard }},
-        fold: {{ .Site.Params.article.code.fold }}
+    var IcarusThemeSettings = {
+      site: {
+        url: '',
+        external_link: {
+          enable: {{ .Site.Params.site.external_link.enable }},
+          exclude: {{ .Site.Params.site.external_link.exclude | default (slice nil) }}
+        }
+      },
+      article: {
+        highlight: {
+          clipboard: {{ .Site.Params.article.code.clipboard }},
+          fold: {{ .Site.Params.article.code.fold }}
+        }
       }
-    }
-  };
+    };
 </script>
 
 <script type="text/javascript" src="{{ printf "%shighlight.js/9.18.1/highlight.min.js" $cdnProvider }}"></script>

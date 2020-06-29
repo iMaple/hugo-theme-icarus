@@ -1,6 +1,6 @@
 <nav class="navbar navbar-main">
     <div class="container">
-        <div class="navbar-brand is-flex-center">
+        <div class="navbar-brand justify-content-center">
             <a class="navbar-item navbar-logo" href="/">
                 {{ if .Site.Params.site.logo }}
                     <img src="{{ .Site.Params.site.logo | relURL }}" alt="{{ .Title }}" height="28">
@@ -24,7 +24,7 @@
                     </a>
                 {{ end }}
                 {{ if and (.Scratch.Get "have").toc (.Params.toc | default true) (eq .Page.Kind "page") }}
-                    <a class="navbar-item is-hidden-tablet catalogue" title="{{ i18n "widget_catalogue" 2 }}" href="javascript:;">
+                    <a class="navbar-item is-hidden-tablet catalogue" title="{{ i18n "widget_catalogue" }}" href="javascript:;">
                         <i class="fas fa-list-ul"></i>
                     </a>
                 {{ end }}
@@ -37,8 +37,3 @@
         </div>
     </div>
 </nav>
-{{ with .Site.Params.navbar.search.type }}
-    {{ $.Scratch.Set "search" $.Site.Params.navbar.search }}
-    {{ partial (printf "search/%s.html" .) $ }}
-    {{ $.Scratch.Delete "search" }}
-{{ end }}

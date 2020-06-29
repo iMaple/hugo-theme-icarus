@@ -1,10 +1,9 @@
-$(document).ready(function () {
-    const $button = $('#back2top');
+$(document).ready(() => {
+    const $button = $('#back-to-top');
     const $footer = $('footer.footer');
     const $mainColumn = $('.column-main');
     const $leftSidebar = $('.column-left');
     const $rightSidebar = $('.column-right');
-
     let lastScrollTop = 0;
     const rightMargin = 20;
     const bottomMargin = 20;
@@ -14,40 +13,33 @@ $(document).ready(function () {
             classname: 'card has-text-centered',
             left: '',
             width: 40,
-            bottom: bottomMargin,
-            'border-radius': 4
+            bottom: bottomMargin
         }
     };
     state['desktop-hidden'] = Object.assign({}, state.base, {
-        classname: state.base.classname + ' rise-up',
+        classname: state.base.classname + ' rise-up'
     });
     state['desktop-visible'] = Object.assign({}, state['desktop-hidden'], {
-        classname: state['desktop-hidden'].classname + ' fade-in',
+        classname: state['desktop-hidden'].classname + ' fade-in'
     });
     state['desktop-dock'] = Object.assign({}, state['desktop-visible'], {
-        classname: state['desktop-visible'].classname + ' fade-in',
-        'border-radius': '50%'
+        classname: state['desktop-visible'].classname + ' fade-in is-rounded',
+        width: 40
     });
     state['mobile-hidden'] = Object.assign({}, state.base, {
         classname: state.base.classname + ' fade-in',
         right: rightMargin
     });
     state['mobile-visible'] = Object.assign({}, state['mobile-hidden'], {
-        classname: state['mobile-hidden'].classname + ' rise-up',
+        classname: state['mobile-hidden'].classname + ' rise-up'
     });
 
     function isStateEquals(prev, next) {
-        for (const prop in prev) {
-            if (!next.hasOwnProperty(prop) || next[prop] !== prev[prop]) {
-                return false;
-            }
-        }
-        for (const prop in next) {
-            if (!prev.hasOwnProperty(prop) || prev[prop] !== prev[prop]) {
-                return false;
-            }
-        }
-        return true;
+        return ![].concat(Object.keys(prev), Object.keys(next)).some(key => {
+            return !Object.prototype.hasOwnProperty.call(prev, key)
+              || !Object.prototype.hasOwnProperty.call(next, key)
+              || next[key] !== prev[key];
+        });
     }
 
     function applyState(state) {
@@ -55,7 +47,7 @@ $(document).ready(function () {
             return;
         }
         $button.attr('class', state.classname);
-        for (let prop in state) {
+        for (const prop in state) {
             if (prop === 'classname') {
                 continue;
             }
@@ -88,7 +80,7 @@ $(document).ready(function () {
         if (!hasRightSidebar()) {
             return 0;
         }
-        return Math.max.apply(null, $rightSidebar.find('.widget').map(function () {
+        return Math.max.apply(null, $rightSidebar.find('.widget').map(function() {
             return $(this).offset().top + $(this).outerHeight(true);
         }));
     }
@@ -119,7 +111,7 @@ $(document).ready(function () {
             let nextState;
             const padding = ($mainColumn.outerWidth() - $mainColumn.width()) / 2;
             const maxLeft = $(window).width() - getButtonWidth() - rightMargin;
-            const maxBottom = $footer.offset().top + getButtonHeight() / 2 + bottomMargin;
+            const maxBottom = $footer.offset().top + (getButtonHeight() / 2) + bottomMargin;
             if (getScrollTop() === 0 || getScrollBottom() < getRightSidebarBottom() + padding + getButtonHeight()) {
                 nextState = state['desktop-hidden'];
             } else if (getScrollBottom() < maxBottom) {
@@ -150,7 +142,7 @@ $(document).ready(function () {
     $(window).resize(update);
     $(window).scroll(update);
 
-    $button.on('click', function () {
-        $('body, html').animate({scrollTop: 0}, 400);
+    $('#back-to-top').on('click', () => {
+        $('body, html').animate({ scrollTop: 0 }, 400);
     });
 });

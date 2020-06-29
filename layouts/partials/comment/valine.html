@@ -1,22 +1,33 @@
 {{ $cdnProvider := (.Scratch.Get "cdn").cdn }}
 {{ $comment := .Scratch.Get "comment" }}
 {{ if and $comment.app_id $comment.app_key }}
+    {{ $cdnProvider := (.Scratch.Get "cdn").cdn }}
     <div id="valine-thread" class="content"></div>
     <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-    <script src="//unpkg.com/valine@1.3.10/dist/Valine.min.js"></script>
+    <script src="{{ printf "%svaline/1.4.14/Valine.min.js" $cdnProvider }}"></script>
     <script>
-      new Valine({
-        el: '#valine-thread',
-        notify: {{ $comment.notify }},
-        verify: {{ $comment.verify }},
-        app_id: {{ $comment.app_id }},
-        app_key: {{ $comment.app_key }},
-        placeholder: {{ $comment.placeholder }}
-      });
+        new Valine({
+          el: '#valine-thread',
+          app_id: {{ $comment.app_id }},
+          app_key: {{ $comment.app_key }},
+          placeholder: {{ $comment.placeholder | default "" }},
+          avatar: {{ $comment.avatar | default "mm" }},
+          avatarForce: {{ $comment.avatar_force | default false }},
+          meta: {{ $comment.meta | default ((slice "nick" "mail" "link") | jsonify) }},
+          pageSize: {{ $comment.page_size | default 10 }},
+          lang: {{ $comment.lang | default "zh-CN" }},
+          visitor: {{ $comment.visitor | default false }},
+          highlight: {{ $comment.highlight | default true }},
+          recordIP: {{ $comment.record_ip | default false }},
+          serverURLs: {{ $comment.server_urls | default "" }},
+          emojiCDN: {{ $comment.emoji_cdn | default "" }},
+          emojiMaps: {{ $comment.emoji_maps | default nil }},
+          enableQQ: {{ $comment.enable_qq | default false }},
+          requiredFields: {{ $comment.required_fields | default (slice | jsonify) }},
+        });
     </script>
 {{ else }}
     <div class="notification is-danger">
-        You forgot to set the <code>app_id</code> or <code>app_key</code> for Valine. Please set it in
-        <code>config.yml</code>.
+        You forgot to set the <code>app_id</code> or <code>app_key</code> for Valine. Please set it in <code>config.yaml</code>.
     </div>
 {{ end }}

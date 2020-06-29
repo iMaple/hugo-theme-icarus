@@ -1,105 +1,76 @@
 <div class="card">
     {{ if and .Site.Params.article.thumbnail .Params.thumbnail }}
         <div class="card-image">
-            <span class="image is-7by1">
+            <span class="image is-7by3">
                 <img class="thumbnail" src="{{ .Params.thumbnail }}" alt="{{ .Title }}">
             </span>
         </div>
     {{ end }}
-    <div class="card-content article">
+    <article class="card-content article" role="article">
         {{ if eq .Section "posts" }}
-            <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="article-meta size-small is-uppercase level is-mobile">
                 <div class="level-left">
-                    <time class="level-item has-text-grey"
-                          datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
+                    <time class="level-item" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}"
+                          title="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
+                    {{ with .Params.author }}
+                        <span class="level-item">{{ . }}</span>
+                    {{ end }}
                     {{ with .Params.categories }}
-                        <div class="level-item">
+                        <span class="level-item">
                             {{ $categories := index . 0 }}
-                            <a class="has-link-grey" href="/categories/{{ $categories }}">{{ $categories }}</a>
-                        </div>
+                            <a class="link-muted" href="/categories/{{ $categories }}">{{ $categories }}</a>
+                        </span>
                     {{ end }}
                     {{ if .Site.Params.article.readtime }}
-                        <span class="level-item has-text-grey">
-                            {{ i18n "article_readtime" .ReadingTime }} ({{ i18n "article_words" . }})
-                        </span>
+                        <span class="level-item">{{ i18n "article_read" .ReadingTime }} ({{ i18n "article_words" .WordCount }})</span>
                     {{ end }}
                     {{ if (.Scratch.Get "have").busuanzi }}
-                        <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
-                            <i class="far fa-eye">&nbsp;</i>
-                            <span id="busuanzi_value_page_pv">0</span><span>&nbsp;{{ i18n "plugin_visit" }}</span>
+                        <span class="level-item" id="busuanzi_container_page_pv">
+                            <i class="far fa-eye"></i><span>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>{{ i18n "plugin_visit" }}</span>
                         </span>
                     {{ end }}
                 </div>
             </div>
         {{ end }}
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">{{ .Title }}</h1>
+        <h1 class="title is-3 is-size-4-mobile">{{ .Title }}</h1>
         <div class="content">{{ .Content }}</div>
         {{ with .Params.tags }}
-            <div class="level is-size-7 is-uppercase">
-                <div class="level-start">
-                    <div class="level-item">
-                        <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                        {{ $tags := . }}
-                        {{ range $index, $value := $tags }}
-                            <a class="has-link-grey" href="/tags/{{ $value }}" rel="tag">{{ $value }}</a>
-                            {{ if ne (add $index 1) (len $tags) }},&nbsp;{{ end }}
-                        {{ end }}
-                    </div>
-                </div>
+            <div class="article-tags size-small mb-4">
+                <span class="mr-2">#</span>
+                {{- range $index, $value := . -}}
+                    <a class="link-muted mr-2" href="/tags/{{ $value }}" rel="tag">{{ $value }}</a>
+                {{- end -}}
             </div>
         {{ end }}
-    </div>
+        {{ partial "common/share.html" . }}
+    </article>
 </div>
 
 {{ if and .Site.Params.donate (.Params.donate | default true) }}
-    <div class="card">
-        <div class="card-content">
-            <h3 class="menu-label has-text-centered">{{ i18n "donate_title" }}</h3>
-            <div class="buttons is-centered">
-                {{ range .Site.Params.donate }}
-                    {{ $.Scratch.Set "donate" . }}
-                    {{ partialCached (printf "donate/%s.html" .type) $ }}
-                    {{ $.Scratch.Delete "donate" }}
-                {{ end }}
-            </div>
-        </div>
-    </div>
+    {{ partial "common/donate.html" . }}
 {{ end }}
 
 {{ if or .PrevInSection .NextInSection }}
-    <div class="card card-transparent">
-        <div class="level post-navigation is-flex-wrap is-mobile">
-            {{ with .NextInSection }}
-                <div class="level-start">
-                    <a class="level level-item has-link-grey article-nav-prev"
-                       href="{{ .Permalink }}">
-                        <i class="level-item fas fa-chevron-left"></i>
-                        <span class="level-item">{{ .Title }}</span>
-                    </a>
-                </div>
-            {{ end }}
-            {{ with .PrevInSection }}
-                <div class="level-end">
-                    <a class="level level-item has-link-grey article-nav-next"
-                       href="{{ .Permalink }}">
-                        <span class="level-item">{{ .Title }}</span>
-                        <i class="level-item fas fa-chevron-right"></i>
-                    </a>
-                </div>
-            {{ end }}
-        </div>
-    </div>
+    <nav class="post-navigation mt-4 level is-mobile">
+        {{ with .NextInSection }}
+            <div class="level-start">
+                <a class="article-nav-prev level level-item link-muted" href="{{ .Permalink }}">
+                    <i class="level-item fas fa-chevron-left"></i>
+                    <span class="level-item">{{ .Title }}</span>
+                </a>
+            </div>
+        {{ end }}
+        {{ with .PrevInSection }}
+            <div class="level-end">
+                <a class="article-nav-next level level-item link-muted" href="{{ .Permalink }}">
+                    <span class="level-item">{{ .Title }}</span>
+                    <i class="level-item fas fa-chevron-right"></i>
+                </a>
+            </div>
+        {{ end }}
+    </nav>
 {{ end }}
 
 {{ if and .Site.Params.comment.type (.Params.comment | default true) }}
-    <div class="card">
-        <div class="card-content">
-            <h3 class="title is-5 has-text-weight-normal">{{ i18n "article_comments" }}</h3>
-            {{ .Scratch.Set "comment" .Site.Params.comment }}
-            {{ partial (printf "comment/%s.html" .Site.Params.comment.type) . }}
-            {{ .Scratch.Delete "comment" }}
-        </div>
-    </div>
+    {{ partial "common/comment.html" . }}
 {{ end }}
-
-{{ .Scratch.Set "toc" .TableOfContents }}

@@ -1,0 +1,8 @@
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5">{{ i18n "article_comments" }}</h3>
+        {{ .Scratch.Set "comment" .Site.Params.comment }}
+        {{ partial (printf "comment/%s.html" .Site.Params.comment.type) . }}
+        {{ .Scratch.Delete "comment" }}
+    </div>
+</div>

@@ -1,71 +1,74 @@
 {{ $search := .Scratch.Get "search" }}
-<link rel="stylesheet" href="{{ "css/search.css" | relURL }}"/>
-<div class="searchbox google-cse-search">
+<style>.searchbox .searchbox-body {background: white;}</style>
+<div class="searchbox">
     <div class="searchbox-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input" placeholder="{{ i18n "search_hint" }}"/>
-            <span class="searchbox-close searchbox-selectable"><i class="fa fa-times-circle"></i></span>
+        <div class="searchbox-header">
+            <div class="searchbox-input-container">
+                <input class="searchbox-input" type="text" placeholder="{{ i18n "search_hint" }}"/>
+            </div>
+            <a class="searchbox-close" href="javascript:;">×</a>
         </div>
         {{ if $search.cx }}
-        <div class="searchbox-result-wrapper">
-            <gcse:searchresults-only></gcse:searchresults-only>
-        </div>
-        <script>
-          (function () {
-            const cx = '{{ $search.cx }}';
-            const gcse = document.createElement('script');
-            gcse.type = 'text/javascript';
-            gcse.async = true;
-            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-            const s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(gcse, s);
-          })();
-        </script>
+            <div class="searchbox-body">
+                <gcse:searchresults-only></gcse:searchresults-only>
+            </div>
         {{ else }}
-        <div class="notification is-danger">
-            It seems that you forget to set the <code>cx</code> value for the Google CSE. Please set it in <code>config.yml</code>.
-        </div>
+            <div class="notification is-danger">
+                It seems that you forget to set the <code>cx</code> value for the Google CSE. Please set it in <code>config.yaml</code>.
+            </div>
         {{ end }}
     </div>
+    {{ if $search.cx }}
+        <script>
+            (function () {
+              const cx = {{ $search.cx }};
+              const gcse = document.createElement('script');
+              gcse.type = 'text/javascript';
+              gcse.async = true;
+              gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+              const s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(gcse, s);
+            })();
+        </script>
+    {{ end }}
 </div>
-<script>
-  (function (document, $) {
-    function debounce(func, wait, immediate) {
-      let timeout;
-      return function () {
-        const context = this, args = arguments;
-        const later = function () {
-          timeout = null;
-          if (!immediate) func.apply(context, args);
-        };
-        const callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
-      };
-    }
-
-    $(document)
-      .on('click', '.navbar-main .search', function () {
-        $('.searchbox').toggleClass('show');
-      })
-      .on('click', '.searchbox .searchbox-mask', function () {
-        $('.searchbox').removeClass('show');
-      })
-      .on('click', '.searchbox-close', function () {
-        $('.searchbox').removeClass('show');
-      })
-      .on('keydown', '.searchbox-input', debounce(function () {
-        const value = $(this).val();
-        try {
-          const element = google.search.cse.element.getElement('searchresults-only0');
-          if (value.trim() === '') {
-            element.clearAllResults();
-          } else {
-            element.execute(value);
+{{ if $search.cx }}
+    <script>
+        (function (document, $) {
+          function debounce(func, wait, immediate) {
+            let timeout;
+            return function () {
+              const context = this;
+              const args = arguments;
+              const later = function () {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+              };
+              const callNow = immediate && !timeout;
+              clearTimeout(timeout);
+              timeout = setTimeout(later, wait);
+              if (callNow) func.apply(context, args);
+            };
           }
-        } catch (e) {
-        }
-      }, 300));
-  })(document, jQuery);
-</script>
+
+          $(document).on('click', '.navbar-main .search', () => {
+            $('.searchbox').toggleClass('show');
+          }).on('click', '.searchbox .searchbox-mask', () => {
+            $('.searchbox').removeClass('show');
+          }).on('click', '.searchbox-close', () => {
+            $('.searchbox').removeClass('show');
+          }).on('keydown', '.searchbox-input', debounce(function () {
+            const value = $(this).val();
+            try {
+              const element = google.search.cse.element.getElement('searchresults-only0');
+              if (value.trim() === '') {
+                element.clearAllResults();
+              } else {
+                element.execute(value);
+              }
+            } catch (e) {
+            }
+          }, 300));
+        }(document, jQuery));
+    </script>
+{{ end }}

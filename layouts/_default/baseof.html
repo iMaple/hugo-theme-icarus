@@ -6,12 +6,11 @@
 {{ partial "common/head.html" . }}
 </head>
 <body class="is-{{ $column }}-column">
-{{/*{{ partialCached "common/header.html" . .RelPermalink .Params.toc (eq .Page.Kind "page") }}*/}}
-{{ partial "common/header.html" . }}
+{{ partial "common/navbar.html" . }}
 <section class="section">
     <div class="container">
         <div class="columns">
-            <div class="column has-order-2 column-main {{ if eq $column 1 }}{{ "is-12" }} {{ else if eq $column 2 }}{{ "is-8-tablet is-8-desktop is-8-widescreen" }} {{ else if eq $column 3 }}{{ "is-8-tablet is-8-desktop is-6-widescreen" }}{{ end }}">
+            <div class="column order-2 column-main {{ if eq $column 1 }}{{ "is-12" }} {{ else if eq $column 2 }}{{ "is-8-tablet is-8-desktop is-8-widescreen" }} {{ else if eq $column 3 }}{{ "is-8-tablet is-8-desktop is-6-widescreen" }}{{ end }}">
                 {{ block "main" . }}{{ end }}
             </div>
             {{ partial "common/widget.html" . }}
@@ -20,5 +19,6 @@
 </section>
 {{ partialCached "common/footer.html" . }}
 {{ partialCached "common/script.html" . }}
+{{ partialCached "common/search.html" . }}
 </body>
 </html>

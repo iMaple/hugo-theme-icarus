@@ -1,0 +1,26 @@
+{{ $comment := .Scratch.Get "comment" }}
+{{ if $comment.shortname }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js"></script>
+    <script>
+        new DisqusJS({
+          shortname: {{ $comment.shortname }},
+          apikey: {{ $comment.api_key }},
+          siteName: {{ .Site.Title }},
+          identifier: {{ md5 .Permalink }},
+          url: {{ .Permalink }},
+          title: {{ .Title }},
+          api: {{ $comment.api }},
+          admin: {{ $comment.admin }},
+          adminLabel: {{ $comment.admin_label | default false }},
+          nesting: {{ $comment.nesting | default 4 }}
+        });
+    </script>
+{{ else }}
+    <div class="notification is-danger">
+        You forgot to set the <code>shortname</code> or <code>api_key</code> for Disqus. Please set it in <code>config.yaml</code>.
+    </div>
+{{ end }}

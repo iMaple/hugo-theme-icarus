@@ -1,23 +1,22 @@
 {{ $comment := .Scratch.Get "comment" }}
 {{ if $comment.uid }}
     <div id="lv-container" data-id="city" data-uid="{{ $comment.uid }}">
-        <script type="text/javascript">
-          (function (d, s) {
-            let j;
-            const e = d.getElementsByTagName(s)[0];
-            if (typeof LivereTower === 'function') {
-              return;
-            }
-            j = d.createElement(s);
-            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-            j.async = true;
-            e.parentNode.insertBefore(j, e);
-          })(document, 'script');
+        <script>
+            (function (d, s) {
+              var j, e = d.getElementsByTagName(s)[0];
+              if (typeof LivereTower === 'function') {
+                return;
+              }
+              j = d.createElement(s);
+              j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+              j.async = true;
+              e.parentNode.insertBefore(j, e);
+            })(document, 'script');
         </script>
         <noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
     </div>
 {{ else }}
     <div class="notification is-danger">
-        You forgot to set the <code>uid</code> for LiveRe. Please set it in <code>config.yml</code>.
+        You forgot to set the <code>uid</code> for LiveRe. Please set it in <code>config.yaml</code>.
     </div>
 {{ end }}

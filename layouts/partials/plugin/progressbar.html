@@ -1,6 +1,5 @@
 {{ $plugin := .Scratch.Get "plugin" }}
 {{ if $plugin.head }}
-    <link rel="stylesheet" href="{{ "css/progressbar.css" | relURL }}"/>
-{{ else }}
     <script type="text/javascript" src="{{ printf "%space/1.0.2/pace.min.js" $plugin.baseUrl }}"></script>
+{{ else }}
 {{ end }}

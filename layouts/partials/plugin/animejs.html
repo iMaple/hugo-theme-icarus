@@ -1,6 +1,6 @@
 {{ $plugin := .Scratch.Get "plugin" }}
 {{ if $plugin.head }}
-    <link rel="stylesheet" href="{{ "css/animation.css" | relURL }}"/>
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
 {{ else }}
     <script type="text/javascript" src="{{ "js/animation.js" | relURL }}"></script>
 {{ end }}

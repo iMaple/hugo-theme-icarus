@@ -1,8 +1,7 @@
 {{ $plugin := .Scratch.Get "plugin" }}
 {{ if $plugin.head }}
-    <link rel="stylesheet" href="{{ "css/back2top.css" | relURL }}"/>
 {{ else }}
-    <a id="back2top" title="{{ i18n "plugin_back2top" }}" href="javascript:;">
+    <a id="back-to-top" title="{{ i18n "plugin_back2top" }}" href="javascript:;">
         <i class="fas fa-chevron-up"></i>
     </a>
     <script type="text/javascript" src="{{ "js/back2top.js" | relURL }}" defer></script>

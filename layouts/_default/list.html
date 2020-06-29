@@ -4,6 +4,6 @@
         {{ partial "articles.html" . }}
     {{ end }}
     {{ if gt $paginator.TotalPages 1 }}
-        {{ partial "paginator.html" $paginator }}
+        {{ partial "misc/paginator.html" $paginator }}
     {{ end }}
 {{ end }}

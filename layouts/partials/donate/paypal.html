@@ -1,19 +1,18 @@
 {{ $donate := .Scratch.Get "donate" }}
 {{ if and $donate.business $donate.currency_code }}
-<a class="button is-warning donate" onclick="document.getElementById('paypal-donate-form').submit()">
-    <span class="icon is-small">
-        <i class="fab fa-paypal"></i>
-    </span>
-    <span>{{ i18n (printf "donate_%s" $donate.type) }}</span>
-</a>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" rel="noopener"
-      id="paypal-donate-form">
-    <input type="hidden" name="cmd" value="_donations"/>
-    <input type="hidden" name="business" value="{{ $donate.business }}"/>
-    <input type="hidden" name="currency_code" value="{{ $donate.currency_code }}"/>
-</form>
+    <a class="button is-warning donate" onclick="document.getElementById('paypal-donate-form').submit()">
+        <span class="icon is-small">
+            <i class="fab fa-paypal"></i>
+        </span>
+        <span>{{ i18n (printf "donate_%s" $donate.type) }}</span>
+    </a>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" rel="noopener" id="paypal-donate-form">
+        <input type="hidden" name="cmd" value="_donations"/>
+        <input type="hidden" name="business" value="{{ $donate.business }}"/>
+        <input type="hidden" name="currency_code" value="{{ $donate.currency_code }}"/>
+    </form>
 {{ else }}
-<div class="notification is-danger">
-    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>config.yml</code>.
-</div>
+    <div class="notification is-danger">
+        You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>config.yaml</code>.
+    </div>
 {{ end }}

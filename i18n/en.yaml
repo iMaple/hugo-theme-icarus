@@ -18,6 +18,9 @@ common_category:
 common_tag:
   one: 'Tag'
   other: 'Tags'
+common_page:
+  one: 'Page'
+  other: 'Pages'
 common_post:
   one: 'Post'
   other: 'Posts'
@@ -36,20 +39,22 @@ widget_tag_cloud:
   other: 'Tag Cloud'
 widget_catalogue:
   other: 'Catalogue'
-widget_email_title:
-  other: 'Subscribe Email'
-widget_email_button:
+widget_subscribe_email:
+  other: 'Subscribe to Updates'
+widget_subscribe:
   other: 'Subscribe'
+widget_adsense:
+  other: 'Advertisement'
 
 article_more:
   other: 'Read More'
 article_comments:
   other: 'Comments'
-article_readtime:
-  one: 'One minute to read'
-  other: '{{ .Count }} minutes to read'
+article_read:
+  one: 'a few seconds read'
+  other: '{{ .Count }} minutes read'
 article_words:
-  other: 'about {{ .WordCount }} words'
+  other: 'About {{ .Count }} words'
 
 donate_title:
   other: 'Like this article? Support the author with'
@@ -61,31 +66,28 @@ donate_paypal:
   other: 'Paypal'
 donate_patreon:
   other: 'Patreon'
+donate_buymeacoffee:
+  other: 'Buy me a coffee'
 
 plugin_back2top:
   other: 'Back to Top'
 plugin_visit:
-  other: '%s visits'
-plugin_visitor:
-  other: 'Visited by {{ . }} users'
+  other: ' visits'
+plugin_visitor_p1:
+  other: 'Visited by '
+plugin_visitor_p2:
+  other: ' users'
 
 search_search:
   other: 'Search'
 search_hint:
   other: 'Type something...'
-
-insight_hint:
-  other: 'Type something...'
-insight_posts:
-  other: 'Posts'
-insight_pages:
-  other: 'Pages'
-insight_categories:
-  other: 'Categories'
-insight_tags:
-  other: 'Tags'
-insight_untitled:
+search_no_result:
+  other: 'No results for'
+search_untitled:
   other: '(Untitled)'
+search_empty_preview:
+  other: '(No preview)'
 
 date_formate_archive:
   other: 'January 2006'

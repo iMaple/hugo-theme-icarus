@@ -1,0 +1,12 @@
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">{{ i18n "donate_title" }}</h3>
+        <div class="buttons is-centered">
+            {{ range .Site.Params.donate }}
+                {{ $.Scratch.Set "donate" . }}
+                {{ partialCached (printf "donate/%s.html" .type) $ }}
+                {{ $.Scratch.Delete "donate" }}
+            {{ end }}
+        </div>
+    </div>
+</div>

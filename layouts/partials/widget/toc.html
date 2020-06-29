@@ -2,10 +2,8 @@
     <div class="card widget" id="toc">
         <div class="card-content">
             <div class="menu">
-                <h3 class="menu-label">{{ i18n "widget_catalogue" 2 }}</h3>
-                {{ $toc := .Scratch.Get "toc" }}
-                {{ .Scratch.Delete "toc" }}
-                {{ $toc }}
+                <h3 class="menu-label">{{ i18n "widget_catalogue" }}</h3>
+                {{ .TableOfContents }}
             </div>
         </div>
     </div>

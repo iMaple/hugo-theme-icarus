@@ -1,0 +1,16 @@
+<nav class="pagination is-centered mt-4" role="navigation" aria-label="pagination">
+    <div class="pagination-previous {{ if not .Prev }}{{ "is-invisible is-hidden-mobile" }}{{ end }}">
+        <a href="{{ with .Prev }}{{ .URL }}{{ end }}">{{ i18n "common_prev" }}</a>
+    </div>
+    <div class="pagination-next {{ if not .Next }}{{ "is-invisible is-hidden-mobile" }}{{ end }}">
+        <a href="{{ with .Next }}{{ .URL }}{{ end }}">{{ i18n "common_next" }}</a>
+    </div>
+    <ul class="pagination-list is-hidden-mobile">
+        {{ $url := slice }}
+        {{ range .Pagers }}
+            {{ $url = $url | append .URL }}
+        {{ end }}
+        {{ $paginate := (partial "function/paginate" (dict "current" .PageNumber "last" .TotalPages "url" $url)) }}
+        {{ range $paginate }}{{ . | safeHTML }}{{ end }}
+    </ul>
+</nav>

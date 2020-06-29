@@ -1,0 +1,15 @@
+{{ $donate := .Scratch.Get "donate" }}
+{{ if $donate.url }}
+    <a class="button donate" href="{{ $donate.url }}"
+       style="background-color:rgba(255,128,62,.87);border-color:transparent;color:white;"
+       target="_blank" rel="noopener">
+        <span class="icon is-small">
+            <i class="fab fa-coffee"></i>
+        </span>
+        <span>{{ i18n (printf "donate_%s" $donate.type) }}</span>
+    </a>
+{{ else }}
+    <div class="notification is-danger">
+        You forgot to set the <code>url</code> for "Buy me a coffee". Please set it in <code>config.yaml</code>.
+    </div>
+{{ end }}

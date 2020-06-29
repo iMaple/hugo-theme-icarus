@@ -1,27 +1,28 @@
 <footer class="footer">
     <div class="container">
         <div class="level">
-            <div class="level-start has-text-centered-mobile">
-                <a class="footer-logo is-block has-mb-6" href="/">
+            <div class="level-start">
+                <a class="footer-logo is-block mb-2" href="/">
                     {{ if .Site.Params.site.logo }}
                         <img src="{{ .Site.Params.site.logo | relURL }}" alt="{{ .Title }}" height="28">
                     {{ else }}
                         {{ .Site.Title }}
                     {{ end }}
                 </a>
-                <p class="is-size-7">
-                    &copy; {{ if gt (now.Format "2006") .Site.Params.site.since }}{{ printf "%s - " .Site.Params.site.since }}{{ end }}{{ now.Format "2006" }} {{ .Site.Author.name }}&nbsp;
-                    Powered by
-                    <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &
-                    <a href="https://github.com/iMaple/hugo-theme-icarus/" target="_blank" rel="noopener">Icarus</a>
+                <p class="size-small">
+                    <span>&copy; {{ if gt (now.Format "2006") .Site.Params.site.since }}{{ printf "%s - " .Site.Params.site.since }}{{ end }}{{ now.Format "2006" }} {{ .Site.Author.name }}</span>&nbsp;&nbsp;Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>&nbsp;&&nbsp;<a href="https://github.com/iMaple/hugo-theme-icarus/" target="_blank" rel="noopener">Icarus</a>
+                    {{ if (.Scratch.Get "have").busuanzi }}
+                        <br/>
+                        <span id="busuanzi_container_site_uv">{{ i18n "plugin_visitor_p1" }}<span id="busuanzi_value_site_uv">0</span>{{ i18n "plugin_visitor_p2" }}</span>
+                    {{ end }}
                 </p>
             </div>
             <div class="level-end">
-                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                <div class="field has-addons">
                     {{ range .Site.Params.footer.links }}
                         <p class="control">
-                            <a class="button is-white is-large" target="_blank" title="{{ .name }}" href="{{ .url }}" rel="noopener">
-                                <i class="{{ .icon }}"></i>
+                            <a class="button is-transparent {{ if .icon }}{{ "is-large" }}{{ end }}" target="_blank" title="{{ .name }}" href="{{ .url }}" rel="noopener">
+                                {{ if .icon }}<i class="{{ .icon }}"></i>{{ else }}{{ .name }}{{ end }}
                             </a>
                         </p>
                     {{ end }}

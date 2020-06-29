@@ -1,6 +1,6 @@
 {{ $column := (.Scratch.Get "layout").column }}
 {{ if (.Scratch.Get "layout").left_widget }}
-    <div class="column is-4-tablet is-4-desktop has-order-1 column-left {{ if eq $column 2 }}{{ "is-4-widescreen" }} {{ else if eq $column 3 }}{{ "is-3-widescreen" }}{{ end }} {{ if .Site.Params.sidebar.left.sticky }}{{ "is-sticky" }}{{ end }}">
+    <div class="column column-left is-4-tablet is-4-desktop {{ if eq $column 2 }}{{ "is-4-widescreen" }} {{ else if eq $column 3 }}{{ "is-3-widescreen" }}{{ end }} order-1 {{ if .Site.Params.sidebar.left.sticky }}{{ "is-sticky" }}{{ end }}">
         {{ range .Site.Params.widgets }}
             {{ $path := printf "widget/%s.html" .type }}
             {{ if and (eq .position "left") (templates.Exists (printf "partials/%s" $path)) }}
@@ -9,20 +9,13 @@
                 {{ $.Scratch.Delete "widget" }}
             {{ end }}
         {{ end }}
-        <div class="column-right-shadow is-hidden-widescreen {{ if .Site.Params.sidebar.right.sticky }}{{ "is-sticky" }}{{ end }}">
-            {{ range .Site.Params.widgets }}
-                {{ $path := printf "widget/%s.html" .type }}
-                {{ if and (eq .position "right") (templates.Exists (printf "partials/%s" $path)) }}
-                    {{ $.Scratch.Set "widget" . }}
-                    {{ partial $path $ }}
-                    {{ $.Scratch.Delete "widget" }}
-                {{ end }}
-            {{ end }}
-        </div>
+        {{ if (.Scratch.Get "layout").right_widget }}
+            <div class="column-right-shadow is-hidden-widescreen {{ if .Site.Params.sidebar.right.sticky }}{{ "is-sticky" }}{{ end }}"></div>
+        {{ end }}
     </div>
 {{ end }}
 {{ if (.Scratch.Get "layout").right_widget }}
-    <div class="column is-4-tablet is-4-desktop has-order-3 column-right {{ if eq $column 2 }}{{ "is-4-widescreen" }} {{ else if eq $column 3 }}{{ "is-3-widescreen is-hidden-touch is-hidden-desktop-only" }}{{ end }} {{ if .Site.Params.sidebar.right.sticky }}{{ "is-sticky" }}{{ end }}">
+    <div class="column column-right is-4-tablet is-4-desktop {{ if eq $column 2 }}{{ "is-4-widescreen" }} {{ else if eq $column 3 }}{{ "is-3-widescreen" }}{{ end }} {{ if eq $column 3 }}{{ "is-hidden-touch is-hidden-desktop-only" }}{{ end }} order-3 {{ if .Site.Params.sidebar.right.sticky }}{{ "is-sticky" }}{{ end }}">
         {{ range .Site.Params.widgets }}
             {{ $path := printf "widget/%s.html" .type }}
             {{ if and (eq .position "right") (templates.Exists (printf "partials/%s" $path)) }}

@@ -1,0 +1,9 @@
+{{ $widget := .Scratch.Get "widget" }}
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">{{ i18n "widget_recents" }}</h3>
+        {{ range first $widget.amount (where .Site.RegularPages.ByDate.Reverse "Section" "==" "posts") }}
+            {{ partial "misc/article_media.html" . }}
+        {{ end }}
+    </div>
+</div>

@@ -4,21 +4,21 @@
     <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"/>
     <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
     <script>
-      const gitment = new Gitment({
-        id: {{ md5 .Permalink }},
-        owner: {{ $comment.owner }},
-        repo: {{ $comment.repo }},
-        oauth: {
-          client_id: {{ $comment.client_id }},
-          client_secret: {{ $comment.client_secret }},
-        },
-      });
-      gitment.render('comment-container');
+        var gitment = new Gitment({
+          id: {{ md5 .Permalink }},
+          owner: {{ $comment.owner }},
+          repo: {{ $comment.repo }},
+          oauth: {
+            client_id: {{ $comment.client_id }},
+            client_secret: {{ $comment.client_secret }},
+          },
+          perPage: {{ $comment.per_page | default 20 }},
+          maxCommentHeight: {{ $comment.max_comment_height | default 250 }}
+        });
+        gitment.render('comment-container');
     </script>
 {{ else }}
     <div class="notification is-danger">
-        You forgot to set the <code>owner</code>, <code>repo</code>, <code>client_id</code>, or
-        <code>client_secret</code> for Gitment.
-        Please set it in <code>config.yml</code>.
+        You forgot to set the <code>owner</code>, <code>repo</code>, <code>client_id</code>, or <code>client_secret</code> for Gitment. Please set it in <code>config.yaml</code>.
     </div>
 {{ end }}

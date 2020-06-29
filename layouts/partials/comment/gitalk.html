@@ -1,27 +1,30 @@
 {{ $comment := .Scratch.Get "comment" }}
-{{ if and $comment.owner $comment.repo $comment.client_id $comment.client_secret }}
+{{ if and $comment.owner $comment.admin $comment.repo $comment.client_id $comment.client_secret }}
     <div id="comment-container"></div>
     {{ $cdnProvider := (.Scratch.Get "cdn").cdn }}
-    <link rel="stylesheet" href="{{ printf "%sgitalk/1.6.0/gitalk.min.css" $cdnProvider }}"/>
-    <script type="text/javascript" src="{{ printf "%sgitalk/1.6.0/gitalk.min.js" $cdnProvider }}"></script>
+    <link rel="stylesheet" href="{{ printf "%sgitalk/1.6.2/gitalk.min.css" $cdnProvider }}"/>
+    <script type="text/javascript" src="{{ printf "%sgitalk/1.6.2/gitalk.min.js" $cdnProvider }}"></script>
     <script>
         {{ $comment := .Scratch.Get "comment" }}
         const gitalk = new Gitalk({
-          clientID: {{ $comment.client_id }},
-          clientSecret: {{ $comment.client_secret }},
           id: {{ md5 .Permalink }},
           repo: {{ $comment.repo }},
           owner: {{ $comment.owner }},
+          clientID: {{ $comment.client_id }},
+          clientSecret: {{ $comment.client_secret }},
           admin: {{ $comment.admin }},
           createIssueManually: {{ $comment.create_issue_manually | default false }},
-          distractionFreeMode: {{ $comment.distraction_free_mode | default false }}
+          distractionFreeMode: {{ $comment.distraction_free_mode | default false }},
+          perPage: {{ $comment.per_page | default 10 }},
+          pagerDirection: {{ $comment.pager_direction | default "last" }},
+          {{- with $comment.proxy }}proxy: {{ . }},{{ end -}}
+          {{- with $comment.flip_move_options }}flipMoveOptions: {{ . }},{{ end -}}
+          enableHotKey: {{ $comment.enable_hotkey | default true }}
         });
         gitalk.render('comment-container');
     </script>
 {{ else }}
     <div class="notification is-danger">
-        You forgot to set the <code>owner</code>, <code>admin</code>, <code>repo</code>, <code>client_id</code>, or
-        <code>client_secret</code> for Gittalk.
-        Please set it in <code>config.yml</code>.
+        You forgot to set the <code>owner</code>, <code>admin</code>, <code>repo</code>, <code>client_id</code>, or<code>client_secret</code> for Gittalk. Please set it in <code>config.yaml</code>.
     </div>
 {{ end }}

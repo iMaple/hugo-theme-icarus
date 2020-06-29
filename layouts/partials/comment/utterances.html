@@ -1,8 +1,8 @@
 {{ $comment := .Scratch.Get "comment" }}
-{{ if $comment.repo }}
+{{ if and $comment.repo (or $comment.issue_term $comment.issue_number) }}
     <script src="https://utteranc.es/client.js"
             repo="{{ $comment.repo }}"
-            issue-term="{{ $comment.issue_term }}"
+            {{- if $comment.issue_term }}issue-term="{{ $comment.issue_term }}"{{ else }}issue-number="{{ $comment.issue_number }}"{{ end -}}
             label="{{ $comment.label }}"
             theme="{{ $comment.theme }}"
             crossorigin="anonymous"
@@ -10,6 +10,6 @@
     </script>
 {{ else }}
     <div class="notification is-danger">
-        You forgot to set the <code>repo</code> for utteranc.es Please set it in <code>config.yml</code>.
+        You forgot to set the <code>repo</code>, <code>issue_term</code> or <code>issue_number</code> for utteranc.es. Please set it in <code>config.yaml</code>.
     </div>
 {{ end }}

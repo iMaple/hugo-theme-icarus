@@ -1,0 +1,14 @@
+<article class="media">
+    {{ if $.Site.Params.article.thumbnail }}
+        <a class="media-left" href="{{ .Permalink }}">
+            <p class="image is-64x64">
+                <img class="thumbnail" src="{{ with .Params.thumbnail }}{{ . }}{{ else }}{{ "img/thumbnail.svg" | relURL }}{{ end }}" alt="{{ .Title }}">
+            </p>
+        </a>
+    {{ end }}
+    <div class="media-content size-small">
+        <p><time class="has-text-grey is-size-7 is-uppercase" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time></p>
+        <p class="title is-6"><a class="link-muted" href="{{ .Permalink }}">{{ .LinkTitle }}</a></p>
+        <p class="is-uppercase">{{ $categories := index .Params.categories 0 }}<a class="link-muted" href="/categories/{{ $categories }}">{{ $categories }}</a></p>
+    </div>
+</article>

@@ -4,39 +4,33 @@
             <a href="{{ .RelPermalink }}"><img class="thumbnail" src="{{ .Params.thumbnail }}" alt="{{ .Title }}"></a>
         </div>
     {{ end }}
-    <div class="card-content article">
+    <article class="card-content article">
         {{ if eq .Section "posts" }}
-            <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="article-meta size-small is-uppercase level is-mobile">
                 <div class="level-left">
-                    <time class="level-item has-text-grey"
-                          datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
-                    {{ with .Params.categories }}
-                        <div class="level-item">
-                            {{ $categories := index . 0 }}
-                            <a class="has-link-grey" href="/categories/{{ $categories }}">{{ $categories }}</a>
-                        </div>
+                    <time class="level-item" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}"
+                          title="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
+                    {{ with .Params.author }}
+                        <span class="level-item">{{ . }}</span>
                     {{ end }}
-                    {{ if and .Site.Params.article.readtime }}
-                        <span class="level-item has-text-grey">
-                            {{ i18n "article_readtime" .ReadingTime }} ({{ i18n "article_words" . }})
+                    {{ with .Params.categories }}
+                        <span class="level-item">
+                            {{ $categories := index . 0 }}
+                            <a class="link-muted" href="/categories/{{ $categories }}">{{ $categories }}</a>
                         </span>
+                    {{ end }}
+                    {{ if .Site.Params.article.readtime }}
+                        <span class="level-item">{{ i18n "article_read" .ReadingTime }} ({{ i18n "article_words" .WordCount }})</span>
                     {{ end }}
                 </div>
             </div>
         {{ end }}
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            <a class="has-link-black-ter" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <h1 class="title is-3 is-size-4-mobile">
+            <a class="link-muted" href="{{ .RelPermalink }}">{{ .Title }}</a>
         </h1>
         <div class="content">{{ .Summary }}</div>
         {{ if .Truncated }}
-            <div class="level is-mobile">
-                <div class="level-start">
-                    <div class="level-item">
-                        <a class="button is-size-7 is-light"
-                           href="{{ .RelPermalink }}#more">{{ i18n "article_more" }}</a>
-                    </div>
-                </div>
-            </div>
+            <a class="article-more button is-small size-small" href="{{ .RelPermalink }}#more">{{ i18n "article_more" }}</a>
         {{ end }}
-    </div>
+    </article>
 </div>

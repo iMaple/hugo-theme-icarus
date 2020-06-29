@@ -1,16 +1,16 @@
 {{ $donate := .Scratch.Get "donate" }}
 {{ if $donate.qrcode }}
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>{{ i18n (printf "donate_%s" $donate.type) }}</span>
-    <div class="qrcode">
-        <img src="{{ $donate.qrcode | relURL }}" alt="{{ i18n (printf " donate_%s" $donate.type) }}" loading="lazy">
-    </div>
-</a>
+    <a class="button is-success donate">
+        <span class="icon is-small">
+            <i class="fab fa-weixin"></i>
+        </span>
+        <span>{{ i18n (printf "donate_%s" $donate.type) }}</span>
+        <span class="qrcode">
+            <img src="{{ $donate.qrcode | relURL }}" alt="{{ i18n (printf " donate_%s" $donate.type) }}">
+        </span>
+    </a>
 {{ else }}
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>config.yml</code>.
-</div>
+    <div class="notification is-danger">
+        You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>config.yaml</code>.
+    </div>
 {{ end }}

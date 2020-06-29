@@ -2,28 +2,20 @@
 <div class="card widget">
     <div class="card-content">
         <div class="menu">
-            <h3 class="menu-label">
-                {{ i18n "widget_email_title" }}
-            </h3>
-            <div>
-                <form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow"
-                      onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri={{ $widget.feedburner_id }}', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
-                    <input type="hidden" value="{{ $widget.feedburner_id }}" name="uri"/>
-                    <input type="hidden" name="loc" value="en_US"/>
-                    <div class="field">
-                        <div class="control has-icons-left">
-                            <input class="input" name="email" type="email"/>
-                            <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
-                        </div>
-                        <p class="help">{{ $widget.description }}</p>
+            <h3 class="menu-label">{{ i18n "widget_subscribe_email" }}</h3>
+            <form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow"
+                  onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri={{ $widget.feedburner_id }}','popupwindow','scrollbars=yes,width=550,height=520');return true">
+                <input type="hidden" value="{{ $widget.feedburner_id }}" name="uri">
+                <input type="hidden" name="loc" value="en_US">
+                <div class="field has-addons">
+                    <div class="control has-icons-left is-expanded">
+                        <input class="input" name="email" type="email" placeholder="Email">
+                        <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
                     </div>
-                    <div class="field is-grouped is-grouped-right">
-                        <div class="control">
-                            <input class="button is-link" type="submit" value="{{ i18n "widget_email_button" }}"/>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                    <div class="control"><input class="button is-primary" type="submit" value="订阅"></div>
+                </div>
+                <p class="help">{{ $widget.description }}</p>
+            </form>
         </div>
     </div>
 </div>

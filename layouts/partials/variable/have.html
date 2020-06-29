@@ -12,4 +12,11 @@
     {{ end }}
 {{ end }}
 
-{{ return (dict "busuanzi" $busuanzi "toc" $toc) }}
+{{ $adsense_client_id := "" }}
+{{ range .Site.Params.widgets }}
+    {{ if eq .type "adsense" }}
+        {{ $adsense_client_id = .client_id }}
+    {{ end }}
+{{ end }}
+
+{{ return (dict "busuanzi" $busuanzi "toc" $toc "adsense_client_id" $adsense_client_id) }}

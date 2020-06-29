@@ -5,17 +5,17 @@ name = "icarus"
 license = "MIT"
 licenselink = "https://github.com/imaple/hugo-theme-icarus/blob/master/LICENSE"
 description = ""
-homepage = "https://blog.imaple.org/"
+homepage = "https://blog.imaple.org"
 tags = ["blog"]
 features = []
-min_version = "0.41"
+min_version = "0.43"
 
 [author]
   name = "iMaple"
-  homepage = "https://imaple.org"
+  homepage = "https://blog.imaple.net"
 
 # If porting an existing theme
 [original]
-  name = ""
-  homepage = ""
-  repo = ""
+  name = "ppoffice"
+  homepage = "https://blog.zhangruipeng.me/hexo-theme-icarus"
+  repo = "https://github.com/ppoffice/hexo-theme-icarus"

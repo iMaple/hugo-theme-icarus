@@ -1,9 +1,21 @@
 {{ $plugin := .Scratch.Get "plugin" }}
 {{ if $plugin.head }}
-    <link rel="stylesheet" href="{{ printf "%slightgallery/1.6.12/css/lightgallery.min.css" $plugin.baseUrl }}"/>
+    <link rel="stylesheet" href="{{ printf "%slightgallery/1.6.8/css/lightgallery.min.css" $plugin.baseUrl }}"/>
     <link rel="stylesheet" href="{{ printf "%sjustifiedGallery/3.7.0/css/justifiedGallery.min.css" $plugin.baseUrl }}"/>
 {{ else }}
-    <script type="text/javascript" src="{{ printf "%slightgallery/1.6.12/js/lightgallery.min.js" $plugin.baseUrl }}" defer></script>
+    <script type="text/javascript" src="{{ printf "%slightgallery/1.6.8/js/lightgallery.min.js" $plugin.baseUrl }}" defer></script>
     <script type="text/javascript" src="{{ printf "%sjustifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" $plugin.baseUrl }}" defer></script>
-    <script type="text/javascript" src="{{ "js/gallery.js" | relURL }}" defer></script>
+    <script>
+        window.addEventListener('load', () => {
+          if (typeof ($.fn.lightGallery) === 'function') {
+            $('.article').lightGallery({selector: '.gallery-item'});
+          }
+          if (typeof ($.fn.justifiedGallery) === 'function') {
+            if ($('.justified-gallery > p > .gallery-item').length) {
+              $('.justified-gallery > p > .gallery-item').unwrap();
+            }
+            $('.justified-gallery').justifiedGallery();
+          }
+        });
+    </script>
 {{ end }}

@@ -1,28 +1,27 @@
-<link rel="stylesheet" href="{{ "css/search.css" | relURL }}"/>
-<link rel="stylesheet" href="{{ "css/insight.css" | relURL }}"/>
-<div class="searchbox ins-search">
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="{{ i18n "insight_hint" }}"/>
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+<div class="searchbox">
+    <div class="searchbox-container">
+        <div class="searchbox-header">
+            <div class="searchbox-input-container">
+                <input class="searchbox-input" type="text" placeholder="{{ i18n "search_hint" }}"/>
+            </div>
+            <a class="searchbox-close" href="javascript:;">×</a>
         </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
+        <div class="searchbox-body"></div>
     </div>
 </div>
-<script>
-  (function (window) {
-    window.INSIGHT_CONFIG = {
-      TRANSLATION: {
-        POSTS: {{ i18n "insight_posts" }},
-        PAGES: {{ i18n "insight_pages" }},
-        CATEGORIES: {{ i18n "insight_categories" }},
-        TAGS: {{ i18n "insight_tags" }},
-        UNTITLED: {{ i18n "insight_untitled" }},
-      },
-      CONTENT_URL: {{ print .Site.BaseURL "index.json" | safeURL }},
-    };
-  })(window);
-</script>
 <script type="text/javascript" src="{{ "js/insight.js" | relURL }}" defer></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      loadInsight(
+        {contentUrl: '/index.json'},
+        {
+          hint: {{ i18n "search_hint" }},
+          untitled: {{ i18n "search_untitled" }},
+          posts: {{ i18n "common_post" 2 }},
+          pages: {{ i18n "common_page" 2 }},
+          categories: {{ i18n "common_category" 2 }},
+          tags: {{ i18n "common_tag" 2 }}
+        }
+      );
+    });
+</script>
