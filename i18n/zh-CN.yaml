@@ -18,12 +18,12 @@ common_category:
 common_tag:
   one: '标签'
   other: '标签'
-common_page:
-  one: '页面'
-  other: '页面'
 common_post:
   one: '文章'
   other: '文章'
+common_page:
+  one: '页面'
+  other: '页面'
 common_prev:
   other: '上一页'
 common_next:
@@ -35,8 +35,6 @@ widget_recents:
   other: '最新文章'
 widget_links:
   other: '链接'
-widget_tag_cloud:
-  other: '标签云'
 widget_catalogue:
   other: '目录'
 widget_subscribe_email:
@@ -46,18 +44,25 @@ widget_subscribe:
 widget_adsense:
   other: '广告'
 
+article_created_at:
+  other: '发表'
+article_updated_at:
+  other: '更新'
 article_more:
   other: '阅读更多'
 article_comments:
   other: '评论'
-article_read:
-  one: '{{ .Count }} 分钟 读完'
-  other: '{{ .Count }} 分钟 读完'
-article_words:
-  other: '大约 {{ .Count }} 个字'
+article_read_time:
+  one: '{{ .Count }} 分钟读完'
+  other: '{{ .Count }} 分钟读完'
+article_word_count:
+  one: '大约{{ .Count }}个字'
+  other: '大约{{ .Count }}个字'
 
 donate_title:
   other: '喜欢这篇文章？打赏一下作者吧'
+donate_afdian:
+  other: '爱发电'
 donate_alipay:
   other: '支付宝'
 donate_wechat:
@@ -71,11 +76,11 @@ donate_buymeacoffee:
 
 plugin_back2top:
   other: '回到顶端'
-plugin_visit:
+plugin_visit_count:
   other: '次访问'
-plugin_visitor_p1:
+plugin_visitor_count_p1:
   other: '共'
-plugin_visitor_p2:
+plugin_visitor_count_p2:
   other: '个访客'
 
 search_search:

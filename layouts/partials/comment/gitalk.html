@@ -19,7 +19,8 @@
           pagerDirection: {{ $comment.pager_direction | default "last" }},
           {{- with $comment.proxy }}proxy: {{ . }},{{ end -}}
           {{- with $comment.flip_move_options }}flipMoveOptions: {{ . }},{{ end -}}
-          enableHotKey: {{ $comment.enable_hotkey | default true }}
+          enableHotKey: {{ $comment.enable_hotkey | default true }},
+          {{- with $comment.language }}language: {{ . }},{{ end -}}
         });
         gitalk.render('comment-container');
     </script>

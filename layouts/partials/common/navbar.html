@@ -19,16 +19,18 @@
             </div>
             <div class="navbar-end">
                 {{ range .Site.Params.navbar.links }}
-                    <a class="navbar-item" target="_blank" title="{{ .name }}" href="{{ .url }}" rel="noopener">
-                        <i class="{{ .icon }}"></i>
-                    </a>
+                    {{ if .name }}
+                        <a class="navbar-item" target="_blank" title="{{ .name }}" href="{{ .url }}" rel="noopener">
+                            <i class="{{ .icon }}"></i>
+                        </a>
+                    {{ end }}
                 {{ end }}
                 {{ if and (.Scratch.Get "have").toc (.Params.toc | default true) (eq .Page.Kind "page") }}
                     <a class="navbar-item is-hidden-tablet catalogue" title="{{ i18n "widget_catalogue" }}" href="javascript:;">
                         <i class="fas fa-list-ul"></i>
                     </a>
                 {{ end }}
-                {{ if .Site.Params.navbar.search.type }}
+                {{ if .Site.Params.search.type }}
                     <a class="navbar-item search" title="{{ i18n "search_search"}}" href="javascript:;">
                         <i class="fas fa-search"></i>
                     </a>

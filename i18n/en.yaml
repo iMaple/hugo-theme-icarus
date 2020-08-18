@@ -18,12 +18,12 @@ common_category:
 common_tag:
   one: 'Tag'
   other: 'Tags'
-common_page:
-  one: 'Page'
-  other: 'Pages'
 common_post:
   one: 'Post'
   other: 'Posts'
+common_page:
+  one: 'Page'
+  other: 'Pages'
 common_prev:
   other: 'Previous'
 common_next:
@@ -32,32 +32,37 @@ common_next:
 widget_follow:
   other: 'Follow'
 widget_recents:
-  other: 'Recent'
+  other: 'Recents'
 widget_links:
   other: 'Links'
-widget_tag_cloud:
-  other: 'Tag Cloud'
 widget_catalogue:
   other: 'Catalogue'
 widget_subscribe_email:
-  other: 'Subscribe to Updates'
+  other: 'Subscribe for updates'
 widget_subscribe:
   other: 'Subscribe'
 widget_adsense:
   other: 'Advertisement'
 
+article_created_at:
+  other: 'Posted'
+article_updated_at:
+  other: 'Updated'
 article_more:
-  other: 'Read More'
+  other: 'Read more'
 article_comments:
   other: 'Comments'
-article_read:
+article_read_time:
   one: 'a few seconds read'
   other: '{{ .Count }} minutes read'
-article_words:
+article_word_count:
+  one: 'About {{ .Count }} word'
   other: 'About {{ .Count }} words'
 
 donate_title:
   other: 'Like this article? Support the author with'
+donate_afdian:
+  other: 'Afdian.net'
 donate_alipay:
   other: 'Alipay'
 donate_wechat:
@@ -70,12 +75,12 @@ donate_buymeacoffee:
   other: 'Buy me a coffee'
 
 plugin_back2top:
-  other: 'Back to Top'
-plugin_visit:
+  other: 'Back to top'
+plugin_visit_count:
   other: ' visits'
-plugin_visitor_p1:
+plugin_visitor_count_p1:
   other: 'Visited by '
-plugin_visitor_p2:
+plugin_visitor_count_p2:
   other: ' users'
 
 search_search:

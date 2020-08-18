@@ -21,7 +21,7 @@
 
 <link rel="canonical" href="{{ .Permalink }}"/>
 <link rel="alternate" href="{{ printf "%sindex.xml" .Site.BaseURL }}" title="{{ .Site.Title }}" type="application/rss+xml"/>
-<link rel="icon" href="{{ .Site.Params.site.favicon | relURL }}"/>
+<link rel="icon" href="{{ .Site.Params.head.favicon | relURL }}"/>
 
 {{ $cdnProvider := (.Scratch.Get "cdn").cdn }}
 {{ $fontProvider := (.Scratch.Get "cdn").font }}

@@ -10,8 +10,18 @@
         {{ if eq .Section "posts" }}
             <div class="article-meta size-small is-uppercase level is-mobile">
                 <div class="level-left">
-                    <time class="level-item" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}"
-                          title="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
+                    {{ with .Date }}
+                        <span class="level-item">
+                            <time dateTime="{{ .Format "2006-01-02T15:04:05Z07:00" }}"
+                                  title="{{ .Format "2006-01-02T15:04:05Z07:00" }}">{{ .Format "2006-01-02" }}</time>{{ i18n "article_created_at" }}
+                        </span>
+                    {{ end }}
+                    {{ with .Lastmod }}
+                        <span class="level-item">
+                            <time dateTime="{{ .Format "2006-01-02T15:04:05Z07:00" }}"
+                                  title="{{ .Format "2006-01-02T15:04:05Z07:00" }}">{{ .Format "2006-01-02" }}</time>{{ i18n "article_updated_at" }}
+                        </span>
+                    {{ end }}
                     {{ with .Params.author }}
                         <span class="level-item">{{ . }}</span>
                     {{ end }}
@@ -22,11 +32,11 @@
                         </span>
                     {{ end }}
                     {{ if .Site.Params.article.readtime }}
-                        <span class="level-item">{{ i18n "article_read" .ReadingTime }} ({{ i18n "article_words" .WordCount }})</span>
+                        <span class="level-item">{{ i18n "article_read_time" .ReadingTime }} ({{ i18n "article_word_count" .WordCount }})</span>
                     {{ end }}
                     {{ if (.Scratch.Get "have").busuanzi }}
                         <span class="level-item" id="busuanzi_container_page_pv">
-                            <i class="far fa-eye"></i><span>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>{{ i18n "plugin_visit" }}</span>
+                            <i class="far fa-eye"></i><span>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>{{ i18n "plugin_visit_count" }}</span>
                         </span>
                     {{ end }}
                 </div>
