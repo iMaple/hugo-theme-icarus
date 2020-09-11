@@ -1,5 +1,5 @@
 {{ with .Site.Params.search.type }}
-    {{ $.Scratch.Set "search" $.Site.Params.navbar.search }}
+    {{ $.Scratch.Set "search" $.Site.Params.search }}
     {{ partial (printf "search/%s.html" .) $ }}
     {{ $.Scratch.Delete "search" }}
 {{ end }}

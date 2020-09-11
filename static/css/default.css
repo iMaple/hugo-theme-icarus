@@ -1011,7 +1011,8 @@ a.has-text-grey-lightest:focus {
 .has-background-grey-dark {
   background-color: #4a4a4a !important;
 }
-.has-text-grey {
+.has-text-grey,
+.article-licensing .licensing-title a {
   color: #7a7a7a !important;
 }
 .has-background-grey {
@@ -10252,22 +10253,24 @@ body {
 body > .section {
   flex-grow: 1;
 }
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  border-radius: 3px;
-  background: rgba(0,0,0,0.06);
-  box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 3px;
-  background: rgba(0,0,0,0.12);
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0,0,0,0.24);
+@media screen and (min-width: 1088px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background: rgba(0,0,0,0.06);
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: rgba(0,0,0,0.12);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.24);
+  }
 }
 .ml-0,
 .mx-0 {
@@ -10338,7 +10341,8 @@ body > .section {
   margin-left: 0.25rem !important;
 }
 .mr-1,
-.mx-1 {
+.mx-1,
+.article-licensing .licensing-meta .icon {
   margin-right: 0.25rem !important;
 }
 .ml-n1,
@@ -10354,7 +10358,8 @@ body > .section {
   margin-top: 0.25rem !important;
 }
 .mb-1,
-.my-1 {
+.my-1,
+.article-licensing .licensing-title p:not(:last-child) {
   margin-bottom: 0.25rem !important;
 }
 .mt-n1,
@@ -10482,7 +10487,8 @@ body > .section {
   margin-top: 1rem !important;
 }
 .mb-3,
-.my-3 {
+.my-3,
+.article-licensing .licensing-title {
   margin-bottom: 1rem !important;
 }
 .mt-n3,
@@ -10530,7 +10536,8 @@ body > .section {
   margin-left: 1.5rem !important;
 }
 .mr-4,
-.mx-4 {
+.mx-4,
+.article-licensing .licensing-meta .level-item {
   margin-right: 1.5rem !important;
 }
 .ml-n4,
@@ -10718,7 +10725,9 @@ body > .section {
 .link-muted:hover {
   color: #3273dc !important;
 }
-.size-small {
+.size-small,
+.article-licensing .licensing-title a,
+.article-licensing .licensing-meta h6 {
   font-size: 0.85rem !important;
 }
 .line-height-inherit {
@@ -10737,6 +10746,11 @@ body > .section {
 .image .avatar {
   height: 100%;
   object-fit: cover;
+}
+.image .fill {
+  object-fit: cover;
+  width: 100% !important;
+  height: 100% !important;
 }
 .button.is-transparent {
   color: inherit;
@@ -10826,11 +10840,6 @@ article.article .content .message.message-immersive .message-body {
   margin-left: 0.75rem;
   margin-right: 0;
 }
-.thumbnail {
-  object-fit: cover;
-  width: 100% !important;
-  height: 100% !important;
-}
 .table-overflow {
   overflow-x: auto;
 }
@@ -10852,6 +10861,52 @@ article.article .content .message.message-immersive .message-body {
   left: 0;
   width: 100%;
   height: 100%;
+}
+.article-licensing {
+  position: relative;
+  z-index: 1;
+  box-shadow: none;
+  background: #f5f5f5;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.article-licensing:after {
+  position: absolute;
+  z-index: -1;
+  right: -50px;
+  top: -87.87px;
+  content: '\f25e';
+  font-size: 200px;
+  font-family: 'Font Awesome 5 Brands';
+  opacity: 0.1;
+}
+.article-licensing .level-left {
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+.article-licensing .licensing-title {
+  line-height: 1.2;
+}
+.article-licensing .licensing-meta .icon {
+  width: 1.2em;
+  height: 1.2em;
+  font-size: 1.2em;
+  vertical-align: bottom;
+}
+.article-licensing .licensing-meta a {
+  color: inherit;
+}
+a.article-nav-prev span {
+  text-align: left;
+  flex-shrink: 1;
+  word-wrap: break-word;
+  white-space: normal;
+}
+a.article-nav-next span {
+  text-align: right;
+  flex-shrink: 1;
+  word-wrap: break-word;
+  white-space: normal;
 }
 .navbar-main {
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
@@ -11158,9 +11213,13 @@ figure.highlight {
   width: 100%;
   position: relative;
   margin: 1em 0 1em !important;
+  border-radius: 4px;
 }
 figure.highlight.folded .highlight-body {
   height: 0;
+}
+figure.highlight .copy {
+  opacity: 0.7;
 }
 figure.highlight pre,
 figure.highlight table tr:hover {
@@ -11198,7 +11257,7 @@ figure.highlight figcaption {
   font-size: 0.8em;
 }
 figure.highlight figcaption * {
-  color: #7a7a7a;
+  color: inherit;
 }
 figure.highlight figcaption span {
   font-weight: 500;

@@ -58,6 +58,14 @@ article_read_time:
 article_word_count:
   one: '大约{{ .Count }}个字'
   other: '大约{{ .Count }}个字'
+article_licensing_author:
+  other: '作者'
+article_licensing_created_at:
+  other: '发布于'
+article_licensing_updated_at:
+  other: '更新于'
+article_licensing_licensed_under:
+  other: '许可协议'
 
 donate_title:
   other: '喜欢这篇文章？打赏一下作者吧'

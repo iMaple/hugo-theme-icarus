@@ -1,8 +1,8 @@
 <div class="card">
-    {{ if and .Site.Params.article.thumbnail .Params.thumbnail }}
+    {{ if .Params.cover }}
         <div class="card-image">
             <span class="image is-7by3">
-                <img class="thumbnail" src="{{ .Params.thumbnail }}" alt="{{ .Title }}">
+                <img class="fill" src="{{ .Params.cover }}" alt="{{ .Title }}">
             </span>
         </div>
     {{ end }}
@@ -36,7 +36,7 @@
                     {{ end }}
                     {{ if (.Scratch.Get "have").busuanzi }}
                         <span class="level-item" id="busuanzi_container_page_pv">
-                            <i class="far fa-eye"></i><span>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>{{ i18n "plugin_visit_count" }}</span>
+                            <span id="busuanzi_value_page_pv">0</span>{{ i18n "plugin_visit_count" }}
                         </span>
                     {{ end }}
                 </div>
@@ -44,6 +44,9 @@
         {{ end }}
         <h1 class="title is-3 is-size-4-mobile">{{ .Title }}</h1>
         <div class="content">{{ .Content }}</div>
+        {{ if and .Site.Params.article.licenses (gt (len .Site.Params.article.licenses) 0)}}
+            {{ partial "misc/article_licensing.html" . }}
+        {{ end }}
         {{ with .Params.tags }}
             <div class="article-tags size-small mb-4">
                 <span class="mr-2">#</span>

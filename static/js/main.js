@@ -166,14 +166,11 @@
     $toc.on('click', toggleToc);
     $mask.on('click', toggleToc);
     $('.navbar-main .catalogue').on('click', toggleToc);
-  }
 
-  /**
-   * ToC兼容, p1/1
-   */
-  /* - Start - */
-  const $ntoc = $('#TableOfContents');
-  if ($ntoc.length > 0) {
+    /**
+     * ToC兼容, p1/1
+     */
+    /* - Start - */
     function buildToc(next, prefix, level) {
       next.each(function (index) {
         const a = $(this).children('a');
@@ -188,13 +185,10 @@
         }
       });
     }
-
-    const ul = $ntoc.children('ul');
-    ul.addClass('menu-list');
-    if (ul) {
+    const ul = $toc.find('#TableOfContents > ul').addClass('menu-list').unwrap()
+    if (ul && config.toc.index) {
       buildToc(ul.children(), '', 1);
     }
+    /* -- End -- */
   }
-  /* -- End -- */
-
 }(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings));

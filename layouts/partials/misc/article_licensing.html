@@ -1,0 +1,46 @@
+<div class="article-licensing box">
+    <div class="licensing-title">
+        <p>{{ .Title }}</p>
+        <p><a href="{{ .Permalink }}">{{ .Permalink }}</a></p>
+    </div>
+    <div class="licensing-meta level is-mobile">
+        <div class="level-left">
+            {{ with .Params.author | default .Site.Author.name }}
+                <div class="level-item is-narrow">
+                    <div>
+                        <h6>{{ i18n "article_licensing_author" }}</h6>
+                        <p>{{ . }}</p>
+                    </div>
+                </div>
+            {{ end }}
+            {{ with .Date }}
+                <div class="level-item is-narrow">
+                    <div>
+                        <h6>{{ i18n "article_licensing_created_at" }}</h6>
+                        <p>{{ .Format "2006-01-02" }}</p>
+                    </div>
+                </div>
+            {{ end }}
+            {{ with .Lastmod }}
+                <div class="level-item is-narrow">
+                    <div>
+                        <h6>{{ i18n "article_licensing_updated_at" }}</h6>
+                        <p>{{ .Format "2006-01-02" }}</p>
+                    </div>
+                </div>
+            {{ end }}
+            <div class="level-item is-narrow">
+                <div>
+                    <h6>{{ i18n "article_licensing_licensed_under" }}</h6>
+                    <p>
+                        {{ range .Site.Params.article.licenses }}
+                            <a class="{{ if .icon }}icon{{ end }}" title="{{ .name }}" href="{{ .url }}" target="_blank" rel="noopener">
+                                {{ with .icon }}<i class="{{ . }}"></i>{{ else }}{{ .name }}{{ end }}
+                            </a>
+                        {{ end }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

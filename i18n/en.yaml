@@ -58,6 +58,14 @@ article_read_time:
 article_word_count:
   one: 'About {{ .Count }} word'
   other: 'About {{ .Count }} words'
+article_licensing_author:
+  other: 'Author'
+article_licensing_created_at:
+  other: 'Posted on'
+article_licensing_updated_at:
+  other: 'Updated on'
+article_licensing_licensed_under:
+  other: 'Licensed under'
 
 donate_title:
   other: 'Like this article? Support the author with'

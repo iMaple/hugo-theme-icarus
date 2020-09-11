@@ -6,6 +6,7 @@ description: ""
 tags: []
 keywords: []
 categories: []
+cover: ""
 thumbnail: ""
 
 toc: true

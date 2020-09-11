@@ -21,7 +21,7 @@
                 <div class="field has-addons">
                     {{ range .Site.Params.footer.links }}
                         <p class="control">
-                            <a class="button is-transparent {{ if .icon }}{{ "is-large" }}{{ end }}" target="_blank" title="{{ .name }}" href="{{ .url }}" rel="noopener">
+                            <a class="button is-transparent {{ if .icon }}{{ "is-large" }}{{ end }}" title="{{ .name }}" href="{{ .url }}" target="_blank" rel="noopener">
                                 {{ if .icon }}<i class="{{ .icon }}"></i>{{ else }}{{ .name }}{{ end }}
                             </a>
                         </p>

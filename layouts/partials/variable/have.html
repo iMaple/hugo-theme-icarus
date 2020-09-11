@@ -6,9 +6,11 @@
 {{ end }}
 
 {{ $toc := false }}
+{{ $toc_index := false }}
 {{ range .Site.Params.widgets }}
     {{ if eq .type "toc" }}
         {{ $toc = true }}
+        {{ $toc_index = .index | default true }}
     {{ end }}
 {{ end }}
 
@@ -19,4 +21,4 @@
     {{ end }}
 {{ end }}
 
-{{ return (dict "busuanzi" $busuanzi "toc" $toc "adsense_client_id" $adsense_client_id) }}
+{{ return (dict "busuanzi" $busuanzi "toc" $toc "toc_index" $toc_index "adsense_client_id" $adsense_client_id) }}
