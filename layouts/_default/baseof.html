@@ -18,7 +18,7 @@
     </div>
 </section>
 {{ partialCached "common/footer.html" . }}
-{{ partialCached "common/script.html" . }}
+{{ partialCached "common/script.html" . (.Params.article.code.fold | default .Site.Params.article.code.fold) }}
 {{ partialCached "common/search.html" . }}
 </body>
 </html>

@@ -3,7 +3,7 @@
 <script type="text/javascript" src="{{ printf "%sjquery/3.5.1/jquery.min.js" $cdnProvider }}"></script>
 <script type="text/javascript" src="{{ printf "%smoment.js/2.26.0/moment-with-locales.min.js" $cdnProvider }}"></script>
 {{ if .Site.Params.article.code.clipboard }}
-    <script type="text/javascript" src="{{ printf "%sclipboard.js/2.0.4/clipboard.min.js" $cdnProvider }}" async></script>
+    <script type="text/javascript" src="{{ printf "%sclipboard.js/2.0.4/clipboard.min.js" $cdnProvider }}" defer></script>
 {{ end }}
 <script type="text/javascript" src="{{ printf "%shighlight.js/9.18.1/highlight.min.js" $cdnProvider }}"></script>
 <script>moment.locale({{ .Site.Language.Lang | default "en" }});</script>
@@ -13,7 +13,7 @@
       article: {
         highlight: {
           clipboard: {{ .Site.Params.article.code.clipboard }},
-          fold: {{ .Site.Params.article.code.fold }}
+          fold: {{ .Params.article.code.fold | default .Site.Params.article.code.fold }}
         }
       },
       toc: {
