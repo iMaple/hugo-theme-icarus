@@ -1,4 +1,4 @@
-baseURL: Your baseURL
+baseURL: https://example.com/
 languageCode: zh-CN
 defaultContentLanguage: zh-cn
 title: Your title
@@ -33,7 +33,7 @@ menu:
       url: /about
       weight: 40
 permalinks:
-  posts: /:sections/:title
+  posts: /:sections/:filename
 outputs:
   home:
     - HTML
@@ -106,17 +106,19 @@ params:
     links:
       - name: Creative Commons
         icon: fab fa-creative-commons
-        url: https://creativecommons.org/licenses/by-nc/4.0/
+        url: https://creativecommons.org/
   article:
-    thumbnail: true
     readtime: true
     code:
       highlight:
         theme: atom-one-light
       clipboard: true
       fold: unfolded
+    licenses:
+      - name: CC BY-NC 4.0
+        url: https://creativecommons.org/licenses/by-nc/4.0/
   search:
-    type: google-cse
+    type: insight
   comment:
     type: gitalk
     owner: ''
@@ -143,7 +145,7 @@ params:
       author: Your name
       authorTitle: Your title
       location: Your location
-      avatar: img/avatar.webp
+      avatar: img/avatar.png
       avatarRounded: true
       gravatar:
       followLink: https://github.com/your_name
@@ -159,14 +161,15 @@ params:
           icon: fas fa-rss
     - type: toc
       position: left
-    - type: category
+      index: true
+    - type: categories
       position: left
-    - type: tag
+    - type: tags
       position: left
-    - type: recent_post
+    - type: recent_posts
       position: right
       amount: 5
-    - type: archive
+    - type: archives
       position: right
     - type: links
       position: right
@@ -215,5 +218,5 @@ params:
       enable: true
   cdn:
     enable: true
-    cdnProvider: bootcdn
+    cdnProvider: cdnjs
     fontProvider: google
