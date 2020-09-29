@@ -44,7 +44,7 @@
         {{ end }}
         <h1 class="title is-3 is-size-4-mobile">{{ .Title }}</h1>
         <div class="content">{{ .Content }}</div>
-        {{ if and .Site.Params.article.licenses (gt (len .Site.Params.article.licenses) 0)}}
+        {{ if and (eq .Page.Type "posts") .Site.Params.article.licenses (gt (len .Site.Params.article.licenses) 0)}}
             {{ partial "misc/article_licensing.html" . }}
         {{ end }}
         {{ with .Params.tags }}
