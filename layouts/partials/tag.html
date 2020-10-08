@@ -1,4 +1,4 @@
-<div class="card widget">
+<div class="card widget" data-type="tags">
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">{{ i18n "common_tag" 2 }}</h3>
@@ -7,7 +7,7 @@
                     <div class="control">
                         <a class="tags has-addons" href="/tags/{{ $name }}/">
                             <span class="tag">{{ $name }}</span>
-                            <span class="tag is-grey-lightest">{{ .Count }}</span>
+                            <span class="tag">{{ .Count }}</span>
                         </a>
                     </div>
                 {{ end }}

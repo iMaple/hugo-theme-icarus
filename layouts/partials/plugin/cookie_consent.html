@@ -1,0 +1,34 @@
+{{ $plugin := .Scratch.Get "plugin" }}
+{{ if $plugin.head }}
+    <link rel="stylesheet" href="{{ printf "%scookieconsent/3.1.1/cookieconsent.min.css" $plugin.baseUrl }}"/>
+{{ else }}
+    <script type="text/javascript" src="{{ printf "%scookieconsent/3.1.1/cookieconsent.min.js" $plugin.baseUrl }}" defer></script>
+    <script>
+    window.addEventListener('load', () => {
+      window.cookieconsent.initialise({
+        type: {{ $plugin.type | default "info" }},
+        theme: {{ $plugin.theme | default "edgeless" }},
+        static: {{ $plugin.static | default false }},
+        position: {{ $plugin.position | default "bottom-left" }},
+        content: {
+          message: {{ i18n "plugin_cookie_consent_message" }},
+          dismiss: {{ i18n "plugin_cookie_consent_dismiss" }},
+          allow: {{ i18n "plugin_cookie_consent_allow" }},
+          deny: {{ i18n "plugin_cookie_consent_deny" }},
+          link: {{ i18n "plugin_cookie_consent_link" }},
+          policy: {{ i18n "plugin_cookie_consent_policy" }},
+          href: {{ $plugin.policy_link | default "https://www.cookiesandyou.com/" }},
+        },
+        palette: {
+          popup: {
+            background: '#edeff5',
+            text: '#838391'
+          },
+          button: {
+            background: '#4b81e8'
+          },
+        },
+      });
+    });
+    </script>
+{{ end }}

@@ -1,7 +1,6 @@
 {{ $donate := .Scratch.Get "donate" }}
 {{ if $donate.qrcode }}
-    <a class="button donate" href="{{ $donate.url }}"
-       style="background-color: #885fd9;border-color: transparent;color: white;" target="_blank" rel="noopener">
+    <a class="button donate" href="{{ $donate.url }}" data-type="afdian" target="_blank" rel="noopener">
         <span class="icon is-small">
           <i class="fas fa-charging-station"></i>
         </span>

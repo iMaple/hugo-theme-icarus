@@ -1,0 +1,18 @@
+{{ $plugin := .Scratch.Get "plugin" }}
+{{ if $plugin.head }}
+{{ else }}
+    <script>
+    var sc_project = {{ $plugin.project }};
+    var sc_invisible = 1;
+    var sc_security = {{ $plugin.security }};
+    var sc_https = 1;
+    var sc_remove_link = 1;
+    </script>
+    <script src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter">
+            <img class="statcounter" src="https://c.statcounter.com/{{ $plugin.project }}/0/{{ $plugin.security }}/1/"
+                 alt="real time web analytics"/>
+        </div>
+    </noscript>
+{{ end }}

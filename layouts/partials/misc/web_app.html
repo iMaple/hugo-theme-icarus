@@ -1,0 +1,10 @@
+{{ with .Site.Params.head.theme_color }}<meta name="theme-color" content="{{ . }}" />{{ end }}
+<meta name="application-name" content="{{ .Site.Title }}" />
+{{ with .Site.Params.head.favicon }}<meta name="msapplication-TileImage" content="{{ . }}" />{{ end }}
+{{ with .Site.Params.head.theme_color }}<meta name="msapplication-TileColor" content="{{ . }}" />}{{ end }}
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="{{ .Site.Title }}" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+{{ range .Site.Params.head.icons }}
+    {{ if .src }}<link rel="apple-touch-icon" sizes="{{ .sizes }}" href={{ .src }} />{{ end }}
+{{ end }}

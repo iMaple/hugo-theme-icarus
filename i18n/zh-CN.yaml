@@ -90,6 +90,18 @@ plugin_visitor_count_p1:
   other: '共'
 plugin_visitor_count_p2:
   other: '个访客'
+plugin_cookie_consent_message:
+  other: '此网站使用Cookie来改善您的体验。'
+plugin_cookie_consent_dismiss:
+  other: '知道了！'
+plugin_cookie_consent_allow:
+  other: '允许使用Cookie'
+plugin_cookie_consent_deny:
+  other: '拒绝'
+plugin_cookie_consent_link:
+  other: '了解更多'
+plugin_cookie_consent_policy:
+  other: 'Cookie政策'
 
 search_search:
   other: '搜索'

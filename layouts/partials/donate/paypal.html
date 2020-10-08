@@ -1,6 +1,6 @@
 {{ $donate := .Scratch.Get "donate" }}
 {{ if and $donate.business $donate.currency_code }}
-    <a class="button is-warning donate" onclick="document.getElementById('paypal-donate-form').submit()">
+    <a class="button donate" data-type="paypal" onclick="document.getElementById('paypal-donate-form').submit()">
         <span class="icon is-small">
             <i class="fab fa-paypal"></i>
         </span>

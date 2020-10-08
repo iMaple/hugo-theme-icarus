@@ -1,6 +1,6 @@
 {{ $donate := .Scratch.Get "donate" }}
 {{ if $donate.qrcode }}
-    <a class="button is-info donate">
+    <a class="button donate" data-type="alipay">
         <span class="icon is-small">
             <i class="fab fa-alipay"></i>
         </span>

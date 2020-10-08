@@ -72,6 +72,17 @@ params:
       exclude: ''
   head:
     favicon: img/favicon.svg
+    manifest:
+      name:
+      short_name:
+      start_url:
+      theme_color:
+      background_color:
+      display: standalone
+      icons:
+        - src: ''
+          sizes: ''
+          type:
     open_graph:
       title:
       type: blog
@@ -192,12 +203,22 @@ params:
     - name: baidu-analytics
       enable: false
       tracking_id:
+    - name: bing_webmaster
+      enable: false
+      tracking_id:
     - name: busuanzi
       enable: true
     - name: cnzz
       enable: false
       id:
       web_id:
+    - name: cookie_consent
+      enable: true
+      type: info
+      theme: edgeless
+      static: false
+      position: bottom-left
+      policy_link: 'https://www.cookiesandyou.com/'
     - name: gallery
       enable: false
     - name: google-analytics
@@ -214,8 +235,15 @@ params:
       enable: true
     - name: progressbar
       enable: true
+    - name: statcounter
+      enable: false
+      project:
+      security:
     - name: smooth-scroll
       enable: true
+    - name: twitter_conversion_tracking
+      enable: false
+      pixel_id:
   cdn:
     enable: true
     cdnProvider: cdnjs

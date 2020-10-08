@@ -90,6 +90,18 @@ plugin_visitor_count_p1:
   other: 'Visited by '
 plugin_visitor_count_p2:
   other: ' users'
+plugin_cookie_consent_message:
+  other: 'This website uses cookies to improve your experience.'
+plugin_cookie_consent_dismiss:
+  other: 'Got it!'
+plugin_cookie_consent_allow:
+  other: 'Allow cookies'
+plugin_cookie_consent_deny:
+  other: 'Decline'
+plugin_cookie_consent_link:
+  other: 'Learn more'
+plugin_cookie_consent_policy:
+  other: 'Cookie Policy'
 
 search_search:
   other: 'Search'

@@ -1,14 +1,14 @@
 <article class="media">
     {{ if .Params.thumbnail }}
-        <a class="media-left" href="{{ .Permalink }}">
-            <p class="image is-64x64">
-                <img class="fill" src="{{ .Params.thumbnail }}" alt="{{ .Title }}">
-            </p>
-        </a>
+        <figure class="media-left">
+            <a class="image" href="{{ .Permalink }}">
+                <img src="{{ .Params.thumbnail }}" alt="{{ .Title }}">
+            </a>
+        </figure>
     {{ end }}
-    <div class="media-content size-small">
-        <p><time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>{{ .Date.Format "2006-01-02" }}</time></p>
-        <p class="title is-6"><a class="link-muted" href="{{ .Permalink }}">{{ .LinkTitle }}</a></p>
-        <p class="is-uppercase">{{ $categories := index .Params.categories 0 }}{{ with $categories }}<a class="link-muted" href="/categories/{{ $categories }}">{{ . }}</a>{{ end }}</p>
+    <div class="media-content">
+        <p class="date"><time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>{{ .Date.Format "2006-01-02" }}</time></p>
+        <p class="title"><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></p>
+        <p class="categories">{{ $categories := index .Params.categories 0 }}{{ with $categories }}<a href="/categories/{{ $categories }}">{{ . }}</a>{{ end }}</p>
     </div>
 </article>

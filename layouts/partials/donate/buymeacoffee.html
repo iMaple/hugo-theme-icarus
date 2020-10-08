@@ -1,8 +1,6 @@
 {{ $donate := .Scratch.Get "donate" }}
 {{ if $donate.url }}
-    <a class="button donate" href="{{ $donate.url }}"
-       style="background-color:rgba(255,128,62,.87);border-color:transparent;color:white;"
-       target="_blank" rel="noopener">
+    <a class="button donate" href="{{ $donate.url }}" data-type="buymeacoffee" target="_blank" rel="noopener">
         <span class="icon is-small">
             <i class="fab fa-coffee"></i>
         </span>

@@ -1,6 +1,6 @@
 {{ $donate := .Scratch.Get "donate" }}
 {{ if $donate.url }}
-    <a class="button is-danger donate" href="{{ $donate.url }}" target="_blank" rel="noopener">
+    <a class="button donate" href="{{ $donate.url }}" data-type="patreon" target="_blank" rel="noopener">
         <span class="icon is-small">
             <i class="fab fa-patreon"></i>
         </span>

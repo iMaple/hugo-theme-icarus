@@ -1,10 +1,15 @@
 {{ if and (.Params.toc | default true) (eq .Page.Kind "page") }}
-    <div class="card widget" id="toc">
+    <div class="card widget" id="toc" data-type="toc">
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">{{ i18n "widget_catalogue" }}</h3>
                 {{ .TableOfContents }}
             </div>
         </div>
+        <style>
+        .menu-list > li > a.is-active + .menu-list {display: block;}
+        .menu-list > li > a + .menu-list {display: none;}
+        </style>
+        <script type="text/javascript" src="{{ "js/toc.js" | relURL }}" defer></script>
     </div>
 {{ end }}

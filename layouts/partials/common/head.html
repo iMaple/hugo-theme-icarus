@@ -16,6 +16,8 @@
 
 <title>{{ .Scratch.Get "title" }}</title>
 
+{{ partialCached "misc/web_app.html" . }}
+
 {{ partial "misc/open_graph.html" . }}
 {{ partial "misc/structured_data.html" . }}
 

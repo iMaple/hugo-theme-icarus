@@ -1,0 +1,5 @@
+{{ $plugin := .Scratch.Get "plugin" }}
+{{ if $plugin.head }}
+    <meta name="msvalidate.01" content="{{ $plugin.tracking_id }}"/>
+{{ else }}
+{{ end }}
