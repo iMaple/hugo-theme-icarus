@@ -12,14 +12,18 @@
                 <div class="level-left">
                     {{ with .Date }}
                         <span class="level-item">
-                            <time dateTime="{{ .Format "2006-01-02T15:04:05Z07:00" }}"
-                                  title="{{ .Format "2006-01-02T15:04:05Z07:00" }}">{{ .Format "2006-01-02" }}</time>{{ i18n "article_created_at" }}
+                            <time dateTime="{{ .Format "2006-01-02T15:04:05Z07:00" }}" title="{{ .Format "2006-01-02T15:04:05Z07:00" }}">
+                                {{ .Format "2006-01-02" }}
+                            </time>
+                            {{ i18n "article_created_at" }}
                         </span>
                     {{ end }}
                     {{ with .Lastmod }}
                         <span class="level-item">
-                            <time dateTime="{{ .Format "2006-01-02T15:04:05Z07:00" }}"
-                                  title="{{ .Format "2006-01-02T15:04:05Z07:00" }}">{{ .Format "2006-01-02" }}</time>{{ i18n "article_updated_at" }}
+                            <time dateTime="{{ .Format "2006-01-02T15:04:05Z07:00" }}" title="{{ .Format "2006-01-02T15:04:05Z07:00" }}">
+                                {{ .Format "2006-01-02" }}
+                            </time>
+                            {{ i18n "article_updated_at" }}
                         </span>
                     {{ end }}
                     {{ with .Params.author }}

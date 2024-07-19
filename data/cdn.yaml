@@ -1,8 +1,6 @@
 cdnProviders:
-  - name: bootcdn
-    baseUrl: 'https://cdn.bootcdn.net/ajax/libs/'
-  - name: staticfile
-    baseUrl: 'https://cdn.staticfile.org/'
+  - name: bytedance
+    baseUrl: 'https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/'
   - name: cdnjs
     baseUrl: 'https://cdnjs.cloudflare.com/ajax/libs/'
   - name: loli

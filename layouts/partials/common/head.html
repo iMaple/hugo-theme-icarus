@@ -27,7 +27,7 @@
 
 {{ $cdnProvider := (.Scratch.Get "cdn").cdn }}
 {{ $fontProvider := (.Scratch.Get "cdn").font }}
-<link rel="stylesheet" href="{{ printf "%sfont-awesome/5.12.1/css/all.min.css" $cdnProvider }}"/>
+<link rel="stylesheet" href="{{ printf "%sfont-awesome/5.15.2/css/all.min.css" $cdnProvider }}"/>
 <link rel="stylesheet" href="{{ printf "%shighlight.js/9.18.1/styles/%s.min.css" $cdnProvider .Site.Params.article.code.highlight.theme }}"/>
 <link rel="stylesheet" href="{{ printf "%sUbuntu:wght@400;600&family=Source+Code+Pro" $fontProvider }}"/>
 

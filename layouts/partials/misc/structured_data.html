@@ -15,6 +15,14 @@
         "@type": "Person",
         "name": "{{ if .Site.Params.site.structured_data.author }}{{ .Site.Params.site.structured_data.author }}{{ else if .Params.author }}{{ .Params.author }}{{ else }}{{ .Site.Author.name }}{{ end }}"
     },
+    "publisher": {
+        "@type": "Organization",
+        "name": "{{ if .Site.Params.site.structured_data.author }}{{ .Site.Params.site.structured_data.author }}{{ else if.Params.author }}{{ .Params.author }}{{ else }}{{ .Site.Author.name }}{{ end }}",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "publisher_logo"
+        }
+    },
     "description": "{{ if .Site.Params.site.structured_data.description }}{{ .Site.Params.site.structured_data.description }}{{ else if .Params.description }}{{ .Params.description }}{{ else }}{{ .Summary }}{{ end }}"
 }
 </script>

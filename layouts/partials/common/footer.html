@@ -13,7 +13,11 @@
                     <span>&copy; {{ if gt (now.Format "2006") .Site.Params.footer.since }}{{ printf "%s - " .Site.Params.site.since }}{{ end }}{{ now.Format "2006" }} {{ .Site.Author.name }}</span>&nbsp;&nbsp;Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>&nbsp;&&nbsp;<a href="https://github.com/iMaple/hugo-theme-icarus/" target="_blank" rel="noopener">Icarus</a>
                     {{ if (.Scratch.Get "have").busuanzi }}
                         <br/>
-                        <span id="busuanzi_container_site_uv">{{ i18n "plugin_visitor_count_p1" }}<span id="busuanzi_value_site_uv">0</span>{{ i18n "plugin_visitor_count_p2" }}</span>
+                        <span id="busuanzi_container_site_uv">
+                            {{ i18n "plugin_visitor_count_p1" }}
+                            <span id="busuanzi_value_site_uv">0</span>
+                            {{ i18n "plugin_visitor_count_p2" }}
+                        </span>
                     {{ end }}
                 </p>
             </div>
