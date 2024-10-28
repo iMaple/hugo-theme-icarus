@@ -2,7 +2,7 @@ A blog theme for Hugo
 
 > 主题移植自 [hexo-theme-icarus](https://github.com/ppoffice/hexo-theme-icarus)
 
-[演示](https://blog.imaple.net/hugo-theme-icarus/)
+[演示](https://hugo.imaple.org/hugo-theme-icarus/)
 
 ## 预览
 

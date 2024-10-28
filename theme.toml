@@ -5,14 +5,14 @@ name = "icarus"
 license = "MIT"
 licenselink = "https://github.com/imaple/hugo-theme-icarus/blob/main/LICENSE"
 description = ""
-homepage = "https://blog.imaple.net/hugo-theme-icarus"
+homepage = "https://github.com/imaple/hugo-theme-icarus"
 tags = ["blog"]
 features = []
 min_version = "0.110.0"
 
 [author]
   name = "iMaple"
-  homepage = "https://blog.imaple.net"
+  homepage = "https://github.com/imaple"
 
 # If porting an existing theme
 [original]

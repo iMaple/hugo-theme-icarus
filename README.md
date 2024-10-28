@@ -2,7 +2,7 @@ A blog theme for Hugo
 
 > It's a port of the [hexo-theme-icarus](https://github.com/ppoffice/hexo-theme-icarus)
 
-[Demo](https://blog.imaple.net/hugo-theme-icarus/) | [中文说明](https://github.com/iMaple/hugo-theme-icarus/blob/master/README-zh.md)
+[Demo](https://hugo.imaple.org/hugo-theme-icarus/) | [中文说明](https://github.com/iMaple/hugo-theme-icarus/blob/master/README-zh.md)
 
 ## Preview
 
