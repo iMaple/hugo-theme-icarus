@@ -1,0 +1,222 @@
+baseURL: https://hugo.imaple.org/hugo-theme-icarus/
+languageCode: zh-CN
+defaultContentLanguage: zh-cn
+title: Your title
+theme: icarus
+paginate: 10
+enableEmoji: true
+enableRobotsTXT: true
+hasCJKLanguage: true
+author:
+  name: Your name
+  email: Your email
+menu:
+  main: &menu
+    - identifier: home
+      name: Home
+      url: /
+      weight: 0
+    - identifier: archives
+      name: Archives
+      url: /archives
+      weight: 10
+    - identifier: categories
+      name: Categories
+      url: /categories
+      weight: 20
+    - identifier: tags
+      name: Tags
+      url: /tags
+      weight: 30
+    - identifier: about
+      name: About
+      url: /about
+      weight: 40
+permalinks:
+  posts: /:sections/:filename
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+sitemap:
+  changefreq: weekly
+  filename: sitemap.xml
+  priority: 0.5
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    codeFences: true
+    guessSyntax: false
+    lineNoStart: 1
+    lineNos: true
+    lineNumbersInTable: true
+    noClasses: false
+    style: monokai
+    tabWidth: 4
+  tableOfContents:
+    endLevel: 4
+    ordered: false
+    startLevel: 2
+params:
+  site:
+    logo: img/logo.svg
+    description: Your description
+    googleVerification: Your googleVerification code
+    baiduVerification: Your baiduVerification code
+    external_link:
+      enable: true
+      field: site
+      exclude: ''
+  head:
+    favicon: img/favicon.svg
+    open_graph:
+      title:
+      type: blog
+      url:
+      image:
+      site_name:
+      author:
+      description:
+      twitter_card:
+      twitter_id:
+      twitter_site:
+      google_plus:
+      fb_admins:
+      fb_app_id:
+    structured_data:
+      title:
+      description:
+      url:
+      author:
+      image:
+    meta:
+      - ''
+    rss:
+  navbar:
+    menu: *menu
+    links:
+      - name:
+        icon:
+        url:
+  footer:
+    since: '2020'
+    links:
+      - name: Creative Commons
+        icon: fab fa-creative-commons
+        url: https://creativecommons.org/
+  article:
+    readtime: true
+    code:
+      highlight:
+        theme: atom-one-light
+      clipboard: true
+      fold: unfolded
+    licenses:
+      - name: CC BY-NC 4.0
+        url: https://creativecommons.org/licenses/by-nc/4.0/
+  search:
+    type: insight
+  comment:
+    type: gitalk
+    owner: ''
+    repo: ''
+    client_id: ''
+    client_secret: ''
+    admin:
+      - ''
+  donate:
+    - type: alipay
+      qrcode: img/donate/alipay.webp
+    - type: wechat
+      qrcode: img/donate/wechat.webp
+  share:
+    type:
+  sidebar:
+    left:
+      sticky: false
+    right:
+      sticky: false
+  widgets:
+    - type: profile
+      position: left
+      author: Your name
+      authorTitle: Your title
+      location: Your location
+      avatar: img/avatar.png
+      avatarRounded: true
+      gravatar:
+      followLink: https://github.com/your_name
+      socialLinks:
+        - name: Telegram
+          url: https://telegram.me/your_name
+          icon: fab fa-telegram
+        - name: Mail
+          url: mailto:your.name@mail.com
+          icon: fas fa-envelope
+        - name: RSS
+          url: /index.xml
+          icon: fas fa-rss
+    - type: toc
+      position: left
+      index: true
+    - type: categories
+      position: left
+    - type: tags
+      position: left
+    - type: recent_posts
+      position: right
+      amount: 5
+    - type: archives
+      position: right
+    - type: links
+      position: right
+      links:
+        - name: Hugo
+          url: https://gohugo.io
+    - type: subscribe_email
+      position: right
+      description: Powered by Google feedburner
+      feedburner_id: ''
+    # - type: adsense
+    #   position: right
+    #   client_id: ''
+    #   slot_id: ''
+  plugins:
+    - name: animejs
+      enable: true
+    - name: back2top
+      enable: true
+    - name: baidu-analytics
+      enable: false
+      tracking_id:
+    - name: busuanzi
+      enable: true
+    - name: cnzz
+      enable: false
+      id:
+      web_id:
+    - name: gallery
+      enable: false
+    - name: google-analytics
+      enable: false
+      tracking_id:
+    - name: hotjar
+      enable: false
+      site_id:
+    - name: katex
+      enable: false
+    - name: mathjax
+      enable: true
+    - name: outdated-browser
+      enable: true
+    - name: progressbar
+      enable: true
+    - name: smooth-scroll
+      enable: true
+  cdn:
+    enable: true
+    cdnProvider: cdnjs
+    fontProvider: google
