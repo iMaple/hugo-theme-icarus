@@ -5,7 +5,7 @@
     </div>
     <div class="licensing-meta level is-mobile">
         <div class="level-left">
-            {{ with .Params.author | default .Site.Author.name }}
+            {{ with .Params.author | default .Site.Params.Author.name }}
                 <div class="level-item is-narrow">
                     <div>
                         <h6>{{ i18n "article_licensing_author" }}</h6>

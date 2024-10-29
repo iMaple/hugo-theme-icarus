@@ -10,7 +10,7 @@
 {{ with .Site.Params.site.googleVerification }}<meta name="google-site-verification" content="{{ . }}"/>{{ end }}
 {{ with .Site.Params.site.baiduVerification }}<meta name="baidu-site-verification" content="{{ . }}"/>{{ end }}
 
-<meta name="author" content="{{ with .Params.author | default .Site.Author.name }}{{ . }}{{ end }}"/>
+<meta name="author" content="{{ with .Params.author | default .Site.Params.Author.name }}{{ . }}{{ end }}"/>
 <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary | plainify }}{{ else if .Site.Params.site.description }}{{ .Site.Params.site.description }}{{ end }}"/>
 <meta name="keywords" content="{{ if .Keywords }}{{ range $index, $element := .Keywords }}{{ $element }}{{ if ne $index (len $.Keywords | add -1) }}, {{ end }}{{ end }}{{ else if .Site.Params.site.keywords }}{{ range $index, $element := .Site.Params.site.keywords }}{{ $element }}{{ if ne $index len .Site.Params.keywords | add -1 }}, {{ end }}{{ end }}{{ end }}"/>
 
