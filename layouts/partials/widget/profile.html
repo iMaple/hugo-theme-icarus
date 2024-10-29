@@ -24,19 +24,19 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">{{ i18n "common_post" 2 }}</p>
-                    <a href="/archives"><p class="title">{{ (.Scratch.Get "count").posts }}</p></a>
+                    <a href="{{ relURL "archives" }}"><p class="title">{{ (.Scratch.Get "count").posts }}</p></a>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">{{ i18n "common_category" 2 }}</p>
-                    <a href="/categories"><p class="title">{{ (.Scratch.Get "count").categories }}</p></a>
+                    <a href="{{ relURL "categories" }}"><p class="title">{{ (.Scratch.Get "count").categories }}</p></a>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">{{ i18n "common_tag" 2 }}</p>
-                    <a href="/tags"><p class="title">{{ (.Scratch.Get "count").tags }}</p></a>
+                    <a href="{{ relURL "tags" }}"><p class="title">{{ (.Scratch.Get "count").tags }}</p></a>
                 </div>
             </div>
         </nav>
@@ -48,7 +48,7 @@
         {{ end }}
         <div class="level is-mobile">
             {{ range $widget.socialLinks }}
-                <a class="level-item button is-transparent is-marginless" title="{{ .name }}" href="{{ .url }}"
+                <a class="level-item button is-transparent is-marginless" title="{{ .name }}" href="{{ .url | relURL }}"
                    target="_blank" rel="noopener">
                     {{ if .icon }}<i class="{{ .icon }}"></i>{{ else }}{{ .name }}{{ end }}
                 </a>

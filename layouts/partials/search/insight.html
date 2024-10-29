@@ -13,7 +13,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
       loadInsight(
-        {contentUrl: '/index.json'},
+        {contentUrl: {{ relURL "index.json" }}},
         {
           hint: {{ i18n "search_hint" }},
           untitled: {{ i18n "search_untitled" }},

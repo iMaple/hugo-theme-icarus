@@ -5,7 +5,7 @@
             <div class="field is-grouped is-grouped-multiline">
                 {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
                     <div class="control">
-                        <a class="tags has-addons" href="/tags/{{ $name }}/">
+                        <a class="tags has-addons" href="{{ relURL (printf "tags/%s" $name) }}">
                             <span class="tag">{{ $name }}</span>
                             <span class="tag">{{ .Count }}</span>
                         </a>

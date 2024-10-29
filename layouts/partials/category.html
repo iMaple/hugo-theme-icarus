@@ -5,7 +5,7 @@
             <ul class="menu-list">
                 {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
                     <li>
-                        <a class="level is-mobile" href="/categories/{{ $name }}/">
+                        <a class="level is-mobile" href="{{ relURL (printf "categories/%s" $name) }}">
                             <span class="level-start">
                                 <span class="level-item">{{ $name }}</span>
                             </span>

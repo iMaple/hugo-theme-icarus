@@ -10,7 +10,7 @@
                         {{ $count = add $count 1 }}
                     {{ end }}
                     <li>
-                        <a class="level is-mobile" href="/archives/#{{ .Key }}">
+                        <a class="level is-mobile" href="{{ relURL (printf "archives/#%s" .Key) }}">
                             <span class="level-start">
                                 <span class="level-item">{{ dateFormat (i18n "date_formate_archive") (printf "%s-01" .Key) }}</span>
                             </span>

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand justify-content-center">
-            <a class="navbar-item navbar-logo" href="/">
+            <a class="navbar-item navbar-logo" href="{{ relURL "" }}">
                 {{ if .Site.Params.site.logo }}
                     <img src="{{ .Site.Params.site.logo | relURL }}" alt="{{ .Title }}" height="28">
                 {{ else }}

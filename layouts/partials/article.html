@@ -32,7 +32,7 @@
                     {{ with .Params.categories }}
                         <span class="level-item">
                             {{ $categories := index . 0 }}
-                            <a class="link-muted" href="/categories/{{ $categories }}">{{ $categories }}</a>
+                            <a class="link-muted" href="{{ relURL (printf "categories/%s" $categories) }}">{{ $categories }}</a>
                         </span>
                     {{ end }}
                     {{ if .Site.Params.article.readtime }}
@@ -55,7 +55,7 @@
             <div class="article-tags size-small mb-4">
                 <span class="mr-2">#</span>
                 {{- range $index, $value := . -}}
-                    <a class="link-muted mr-2" href="/tags/{{ $value }}" rel="tag">{{ $value }}</a>
+                    <a class="link-muted mr-2" href="{{ relURL (printf "/tags/%s" $value) }}" rel="tag">{{ $value }}</a>
                 {{- end -}}
             </div>
         {{ end }}
