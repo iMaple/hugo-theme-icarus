@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://hugo.imaple.org/hugo-theme-icarus/sitemap.xml
