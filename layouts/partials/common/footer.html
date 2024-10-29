@@ -10,7 +10,7 @@
                     {{ end }}
                 </a>
                 <p class="is-size-7">
-                    <span>&copy; {{ if gt (now.Format "2006") .Site.Params.footer.since }}{{ printf "%s - " .Site.Params.site.since }}{{ end }}{{ now.Format "2006" }} {{ .Site.Params.Author.name }}</span>&nbsp;&nbsp;Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>&nbsp;&&nbsp;<a href="https://github.com/iMaple/hugo-theme-icarus/" target="_blank" rel="noopener">Icarus</a>
+                    <span>&copy; {{ if gt (now.Format "2006") .Site.Params.footer.since }}{{ printf "%s - " .Site.Params.footer.since }}{{ end }}{{ now.Format "2006" }} {{ .Site.Params.Author.name }}</span>&nbsp;&nbsp;Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>&nbsp;&&nbsp;<a href="https://github.com/iMaple/hugo-theme-icarus/" target="_blank" rel="noopener">Icarus</a>
                     {{ if (.Scratch.Get "have").busuanzi }}
                         <br/>
                         <span id="busuanzi_container_site_uv">
