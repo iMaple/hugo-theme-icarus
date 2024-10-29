@@ -158,7 +158,7 @@ params:
           url: mailto:your.name@mail.com
           icon: fas fa-envelope
         - name: RSS
-          url: /index.xml
+          url: index.xml
           icon: fas fa-rss
     - type: toc
       position: left
