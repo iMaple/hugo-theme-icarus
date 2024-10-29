@@ -3,13 +3,11 @@ languageCode: zh-CN
 defaultContentLanguage: zh-cn
 title: Your title
 theme: icarus
-paginate: 10
+pagination:
+  pagerSize: 10
 enableEmoji: true
 enableRobotsTXT: true
 hasCJKLanguage: true
-author:
-  name: Your name
-  email: Your email
 menu:
   main: &menu
     - identifier: home
@@ -61,6 +59,9 @@ markup:
     ordered: false
     startLevel: 2
 params:
+  author:
+    name: Your name
+    email: Your email
   site:
     logo: img/logo.svg
     description: Your description
